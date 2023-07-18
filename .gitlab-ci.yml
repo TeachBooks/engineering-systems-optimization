@@ -1,0 +1,63 @@
+image: python:3.10-bullseye
+
+stages:
+  - test
+  - build
+  - deploy
+
+variables:
+  PIP_CACHE_DIR: "$CI_PROJECT_DIR/.cache/pip"
+
+cache:
+  paths:
+    - .cache/pip
+    - venv/
+
+# Before running other jobs, setup Python
+before_script:
+  - python -V
+  - pip install virtualenv
+  - virtualenv venv
+  - source venv/bin/activate
+
+# This job tests if the book compiles gracefully after a new addition
+test-build:
+  stage: test
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+    - if: $CI_COMMIT_BRANCH == "main" && $CI_PIPELINE_SOURCE == "push"
+  script:
+    - pip install -r requirements.txt
+    - jupyter-book clean book/
+    - jupyter-book build book/
+
+# This job builds the HTML when it gets pushed to the publish branch
+build-book:
+  stage: build
+  only:
+    - publish
+  script:
+    - pip install -r requirements.txt
+    - jupyter-book clean book/
+    - jupyter-book build book/
+  artifacts:
+    paths:
+      - book/_build/html/
+
+# This job commits the built HTML to the publish-html branch
+push-html:
+  stage: deploy
+  only:
+    - publish
+  before_script:
+    - apt-get update -y
+    - apt-get install rsync -y
+    - git config --global user.name "$GITLAB_USER_NAME"
+    - git config --global user.email "$GITLAB_USER_EMAIL"
+    - git fetch origin publish-html
+    - git checkout publish-html
+  script:
+    - rsync -av --delete-after --exclude=".git/" --exclude=".cache/" --exclude="venv/" ./book/_build/html/ .
+    - git add --all -- ':!.cache/*'
+    - git commit --allow-empty -m "$CI_COMMIT_MESSAGE"
+    - git push https://gitlab-ci-token:$ACCESS_TOKEN@gitlab.tudelft.nl/$CI_PROJECT_PATH.git publish-html

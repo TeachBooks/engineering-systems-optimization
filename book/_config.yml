@@ -1,0 +1,26 @@
+title: Engineering Systems Optimization
+author: Tom van Woudenberg
+email: T.R.vanWoudenberg@tudelft.nl 
+logo: figures/TUDelft_logo_rgb.png
+
+execute:
+  execute_notebooks: auto
+  exclude_patterns:
+    - '*_dont_execute.ipynb'
+
+sphinx:
+  config:
+    # Bibliography style
+    bibtex_reference_style: author_year
+    html_show_copyright: false
+  extra_extensions:
+  - sphinx_inline_tabs
+  - sphinx_grasple
+  - sphinx.ext.imgconverter
+
+bibtex_bibfiles:
+  - references.bib
+
+
+html:
+  extra_footer: <img src="https://i.creativecommons.org/l/by/4.0/88x31.png" width="88px">
