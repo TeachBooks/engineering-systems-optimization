@@ -1,6 +1,14 @@
 format: jb-book
 root: intro
-
-chapters:
-- file: practicals/Session_1b
-- file: references.md
+parts:
+  - caption: Starting with Python
+    chapters:
+    - file: practicals/Python_start
+    - file: practicals/Python_start_2
+    - file: practicals/Python_start_3
+  - caption: Optimization using Python
+    chapters:
+    - file: practicals/Unconstrained_optimization
+  - captions: Any other business
+    chapters:
+    - file: references
