@@ -32,7 +32,7 @@ build-book:
     - if: $CI_COMMIT_BRANCH == "publish" && $CI_PIPELINE_SOURCE == "push"
       variables:
         TAG: $TAG_LATEST
-    - if: $CI_COMMIT_BRANCH == "main" && $CI_PIPELINE_SOURCE == "push"
+    - if: $CI_COMMIT_BRANCH == "master" && $CI_PIPELINE_SOURCE == "push"
       variables:
         TAG: $TAG_DRAFT
   before_script:
@@ -62,7 +62,7 @@ deploy-draft:
   stage: deploy
   image: docker
   rules:
-    - if: $CI_COMMIT_BRANCH == "main" && $CI_PIPELINE_SOURCE == "push"
+    - if: $CI_COMMIT_BRANCH == "master" && $CI_PIPELINE_SOURCE == "push"
   before_script:
     - docker info
     - docker stop $CI_PROJECT_NAME-draft || exit_code=$?
