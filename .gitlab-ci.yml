@@ -1,5 +1,3 @@
-image: python:3.10-bullseye
-
 stages:
   - test
   - build
@@ -7,57 +5,70 @@ stages:
 
 variables:
   PIP_CACHE_DIR: "$CI_PROJECT_DIR/.cache/pip"
+  REGISTRY_HOST: localhost:5000
+  TAG_LATEST: $REGISTRY_HOST/$CI_PROJECT_NAME/$CI_COMMIT_REF_NAME:latest
+  TAG_DRAFT: $REGISTRY_HOST/$CI_PROJECT_NAME-draft/$CI_COMMIT_REF_NAME:latest
 
 cache:
   paths:
     - .cache/pip
-    - venv/
-
-# Before running other jobs, setup Python
-before_script:
-  - python -V
-  - pip install virtualenv
-  - virtualenv venv
-  - source venv/bin/activate
 
 # This job tests if the book compiles gracefully after a new addition
 test-build:
   stage: test
+  image: python:3.11-bullseye
   rules:
     - if: $CI_PIPELINE_SOURCE == "merge_request_event"
-    - if: $CI_COMMIT_BRANCH == "main" && $CI_PIPELINE_SOURCE == "push"
   script:
     - pip install -r requirements.txt
     - jupyter-book clean book/
     - jupyter-book build book/
 
-# This job builds the HTML when it gets pushed to the publish branch
+# This job builds the Docker container
 build-book:
   stage: build
-  only:
-    - publish
-  script:
-    - pip install -r requirements.txt
-    - jupyter-book clean book/
-    - jupyter-book build book/
-  artifacts:
-    paths:
-      - book/_build/html/
-
-# This job commits the built HTML to the publish-html branch
-push-html:
-  stage: deploy
-  only:
-    - publish
+  image: docker
+  rules:
+    - if: $CI_COMMIT_BRANCH == "publish" && $CI_PIPELINE_SOURCE == "push"
+      variables:
+        TAG: $TAG_LATEST
+    - if: $CI_COMMIT_BRANCH == "main" && $CI_PIPELINE_SOURCE == "push"
+      variables:
+        TAG: $TAG_DRAFT
   before_script:
-    - apt-get update -y
-    - apt-get install rsync -y
-    - git config --global user.name "$GITLAB_USER_NAME"
-    - git config --global user.email "$GITLAB_USER_EMAIL"
-    - git fetch origin publish-html
-    - git checkout publish-html
+    - docker info
   script:
-    - rsync -av --delete-after --exclude=".git/" --exclude=".cache/" --exclude="venv/" ./book/_build/html/ .
-    - git add --all -- ':!.cache/*'
-    - git commit --allow-empty -m "$CI_COMMIT_MESSAGE"
-    - git push https://gitlab-ci-token:$ACCESS_TOKEN@gitlab.tudelft.nl/$CI_PROJECT_PATH.git publish-html
+    - docker build -t $TAG .
+    - docker push $TAG
+
+# This job takes down the existing container and starts the new one
+deploy-book:
+  stage: deploy
+  image: docker
+  rules:
+    - if: $CI_COMMIT_BRANCH == "publish" && $CI_PIPELINE_SOURCE == "push"
+  before_script:
+    - docker info
+    - docker stop $CI_PROJECT_NAME || exit_code=$?
+    - if [ $exit_code -ne 0 ]; then echo "Container not found, cannot stop"; else docker rm $CI_PROJECT_NAME; fi
+  script:
+    - docker run -d -p 8010:8000 --name $CI_PROJECT_NAME $TAG_LATEST # Make sure to use a different port for each book!
+  environment:
+    name: production
+    url: https://interactivetextbooks.citg.tudelft.nl/$CI_PROJECT_NAME
+
+# Deploy the draft version of the book
+deploy-draft:
+  stage: deploy
+  image: docker
+  rules:
+    - if: $CI_COMMIT_BRANCH == "main" && $CI_PIPELINE_SOURCE == "push"
+  before_script:
+    - docker info
+    - docker stop $CI_PROJECT_NAME-draft || exit_code=$?
+    - if [ $exit_code -ne 0 ]; then echo "Container not found, cannot stop"; else docker rm $CI_PROJECT_NAME-draft; fi
+  script:
+    - docker run -d -p 8011:8000 --name $CI_PROJECT_NAME-draft $TAG_DRAFT
+  environment:
+    name: draft
+    url: https://interactivetextbooks.citg.tudelft.nl/$CI_PROJECT_NAME-draft
