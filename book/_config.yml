@@ -4,9 +4,7 @@ email: T.R.vanWoudenberg@tudelft.nl
 logo: figures/TUDelft_logo_rgb.png
 
 execute:
-  execute_notebooks: auto
-  exclude_patterns:
-    - '*_dont_execute.ipynb'
+  execute_notebooks: 'off'
 
 sphinx:
   config:
