@@ -1,9 +1,13 @@
 # Python installation instruction
 
-[Python](https://python.org/) is a popular language for research computing, and great for general-purpose programming as well. Installing all of its research packages individually can be a bit difficult, so you're recommended to use [Anaconda](https://www.anaconda.com/products/individual), an all-in-one installer.
+```{contents}
+:local:
+```
 
-Regardless of how you choose to install it, please make sure you install Python version 3.x (e.g., 3.6 is fine).
+[Python](https://python.org/) is a popular language for research computing, and great for general-purpose programming as well. Installing all of its research packages individually can be a bit difficult, so you're recommended to use [Anaconda](https://www.anaconda.com/products/individual), an all-in-one installer. To make sure you're on the same versions you can set up an 'environment'.
 
+
+## Installation Anaconda
 We will teach Python using the [Jupyter Notebook](https://jupyter.org/), a programming environment that runs in a web browser (Jupyter Notebook will be installed by Anaconda). For this to work you will need a reasonably up-to-date browser. The current versions of the Chrome, Safari and Firefox browsers are all [supported](https://jupyter-notebook.readthedocs.io/en/stable/notebook.html#browser-compatibility) (some older browsers, including Internet Explorer version 9 and below, are not). Notebooks can be run after you install Python and the appropriate packages.
 
 ````{tab-set}
@@ -34,9 +38,22 @@ We will teach Python using the [Jupyter Notebook](https://jupyter.org/), a progr
 ```
 ````
 
-:::{card} Test Yourself
+:::{card}
 <iframe src="https://tudelft.h5p.com/content/1292011161958921937/embed" aria-label="Check installation" width="1088" height="637" frameborder="0" allowfullscreen="allowfullscreen" allow="autoplay *; geolocation *; microphone *; camera *; midi *; encrypted-media *"></iframe><script src="https://tudelft.h5p.com/js/h5p-resizer.js" charset="UTF-8"></script>
 :::
 
-
 Source: {cite:ts}`carprentries_download`
+
+## Set up the environment
+Now we will make sure you have an environment to get started in this course. This year we will use Python 3.11, so we are going to make sure that’s installed and ready to go. Other Python packages that are not included in the base installation will be installed in your environment when we need to use them, to make sure we know exactly what is going on when working with code in this course.
+
+The following steps will create an Anaconda environment called optimizatoin and install Python 3.11. Even if you already have Python 3.11, it is still good practice to create a dedicated Anaconda environment for each of your major projects. Please make sure you have upgraded Anaconda before proceeding with these steps:
+
+1. Open Anaconda prompt from the start menu
+2. Execute: `conda create -n optimization python=3.11 anaconda` (this may take several minutes)
+3. Activate: `conda activate optimization`
+4. Check: you should now see `optimization` displayed somewhere in the prompt between parenthesis, like this: `(optimization)`
+
+One important reminder: throughout the semester you should be using the optimization environment every time you use Python, except when instructed otherwise. All you have to do is remember to use the command `conda activate optimization` prior to opening your files, or select the new environment in the Anaconda Navigoator prior to opening any python-program.
+
+Source: {cite:ts}`mude_getting_started`

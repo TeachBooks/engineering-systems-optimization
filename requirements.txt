@@ -1,3 +1,4 @@
 jupyter-book
 sphinx-inline-tabs
 git+https://github.com/dbalague/sphinx-grasple
+download_link_replacer @ git+https://gitlab.tudelft.nl/mude/sphinx-download-link-replacer@dlr-0.1.1

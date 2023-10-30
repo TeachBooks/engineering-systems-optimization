@@ -15,6 +15,7 @@ sphinx:
   - sphinx_inline_tabs
   - sphinx_grasple
   - sphinx.ext.imgconverter
+  - download_link_replacer
 
 bibtex_bibfiles:
   - references.bib

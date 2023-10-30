@@ -3,12 +3,13 @@ root: intro
 parts:
   - caption: Starting with Python
     chapters:
-    - file: practicals/Python_start
-    - file: practicals/Python_start_2
-    - file: practicals/Python_start_3
+    - file: pages/Python_start
+    - file: pages/Python_start_2
+    - file: pages/Python_start_3
   - caption: Optimization using Python
     chapters:
-    - file: practicals/Unconstrained_optimization
-  - captions: Any other business
+    - file: pages/Unconstrained_optimization
+    - file: pages/linear_constrained_optimization
+  - captions: Annex
     chapters:
     - file: references
