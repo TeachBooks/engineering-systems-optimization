@@ -1,7 +1,4 @@
 # Getting started after installation
-```{contents}
-:local:
-```
 
 After installing Anaconda and setting up the environment, start the Navigator and select the `optimization environment`. This can be done on the top of the screen at `All application` on  `base (root)`: change `base (root)` to `optimization`. Or in the left tab under `Environments`, click `optimization.`
 Then, launch the Jupyter Notebook from the list of applications under `home`, which will open the Jupyter Notebook dashboard in your webbrowser (starting in your Documents folder on Windows and your home directory on a Mac):

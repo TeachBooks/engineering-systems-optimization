@@ -1,9 +1,5 @@
 # Python installation instruction
 
-```{contents}
-:local:
-```
-
 [Python](https://python.org/) is a popular language for research computing, and great for general-purpose programming as well. Installing all of its research packages individually can be a bit difficult, so you're recommended to use [Anaconda](https://www.anaconda.com/products/individual), an all-in-one installer. To make sure you're on the same versions you can set up an 'environment'.
 
 
