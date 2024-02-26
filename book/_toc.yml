@@ -10,6 +10,3 @@ parts:
     chapters:
     - file: pages/Unconstrained_optimization
     - file: pages/linear_constrained_optimization
-  - captions: Annex
-    chapters:
-    - file: references
