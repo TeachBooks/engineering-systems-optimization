@@ -28,9 +28,6 @@ sphinx:
 bibtex_bibfiles:
   - references.bib
 
-repository:
-  url: https://gitlab.tudelft.nl/interactivetextbooks-citg/engineering-systems-optimization
-
 html:
   extra_footer: <img src="https://i.creativecommons.org/l/by/4.0/88x31.png" width="88px">
   comments:

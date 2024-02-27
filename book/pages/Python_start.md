@@ -34,7 +34,7 @@ We will teach Python using the [Jupyter Notebook](https://jupyter.org/), a progr
 ```
 ````
 
-:::{card}
+:::{card} Test Yourself
 <iframe src="https://tudelft.h5p.com/content/1292011161958921937/embed" aria-label="Check installation" width="1088" height="637" frameborder="0" allowfullscreen="allowfullscreen" allow="autoplay *; geolocation *; microphone *; camera *; midi *; encrypted-media *"></iframe><script src="https://tudelft.h5p.com/js/h5p-resizer.js" charset="UTF-8"></script>
 :::
 
@@ -50,6 +50,6 @@ The following steps will create an Anaconda environment called optimizatoin and 
 3. Activate: `conda activate optimization`
 4. Check: you should now see `optimization` displayed somewhere in the prompt between parenthesis, like this: `(optimization)`
 
-One important reminder: throughout the semester you should be using the optimization environment every time you use Python, except when instructed otherwise. All you have to do is remember to use the command `conda activate optimization` prior to opening your files, or select the new environment in the Anaconda Navigoator prior to opening any python-program.
+One important reminder: throughout the semester you should be using the optimization environment every time you use Python, except when instructed otherwise. All you have to do is remember to use the command `conda activate optimization` prior to opening your files, or select the new environment in the Anaconda Navigator prior to opening any python-program.
 
 Source: {cite:ts}`mude_getting_started`
