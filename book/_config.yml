@@ -6,12 +6,8 @@ logo: figures/TUDelft_logo_rgb.png
 execute:
   execute_notebooks: 'off'
 
-launch_buttons:
-  thebe: true
-
 sphinx:
   config:
-    # Bibliography style
     bibtex_reference_style: author_year
     html_show_copyright: false
     html_js_files:
@@ -19,9 +15,11 @@ sphinx:
     thebe_config:
       use_thebe_lite: true
       exclude_patterns: ["**/_*.yml", "**/*.md", "**/*.ipynb"]
+    html_theme_options:
+      launch_buttons:
+          thebe: true
   extra_extensions:
   - sphinx_inline_tabs
-  - sphinx_grasple
   - sphinx.ext.imgconverter
   - download_link_replacer
 
