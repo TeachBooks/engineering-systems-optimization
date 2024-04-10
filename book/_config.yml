@@ -2,9 +2,15 @@ title: Engineering Systems Optimization
 author: Tom van Woudenberg
 email: T.R.vanWoudenberg@tudelft.nl 
 logo: pages/figures/logo.jpg
+only_build_toc_files : True
 
 execute:
   execute_notebooks: 'off'
+
+repository:
+  url                       : https://gitlab.tudelft.nl/interactivetextbooks-citg/engineering-systems-optimization  # The URL to your book's repository
+  path_to_book              : "/book"  # A path to your book's folder, relative to the repository root.
+  branch                    : publish  # Which branch of the repository should be used when creating links
 
 sphinx:
   config:
@@ -16,12 +22,10 @@ sphinx:
       use_thebe_lite: true
       exclude_patterns: ["**/_*.yml", "**/*.md", "**/*.ipynb"]      
     html_theme_options:
-      repository_url: "https://gitlab.tudelft.nl/interactivetextbooks-citg/engineering-systems-optimization"
       use_repository_button: true
       use_issues_button : true
       launch_buttons:
           thebe: true
-
   extra_extensions:
   - download_link_replacer
 
