@@ -1,6 +1,6 @@
 # Introduction
 
-This book contains the preparations for the practical sessions in CME4501 Engineering Systems Optimization.
+This book contains the preparations for the practical sessions in CME4501 Engineering Systems Optimization. All other information about this course is available on [Brightspace](https://brightspace.tudelft.nl/d2l/le/content/595155/Home).
 
 This book includes interactive features!
 - Interactive quizzes: Some page include interactive 'H5p' quizzes. This allows you to check your understanding. Any interactions you have with this system are not stored, unless you login into H5p.
