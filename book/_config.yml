@@ -7,6 +7,11 @@ only_build_toc_files : True
 execute:
   execute_notebooks: 'off'
 
+html:
+  favicon : "pages/figures/favicon.ico"
+  home_page_in_navbar       : true
+  baseurl : "https://teachbooks.tudelft.nl/engineering-systems-optimization/"
+
 sphinx:
   config:
     bibtex_reference_style: author_year
@@ -22,7 +27,6 @@ sphinx:
       use_issues_button : true
       launch_buttons:
           thebe: true
-
   extra_extensions:
   - download_link_replacer
 
