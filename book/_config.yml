@@ -6,9 +6,6 @@ logo: pages/figures/logo.jpg
 execute:
   execute_notebooks: 'off'
 
-launch_buttons:
-  thebe: true
-
 sphinx:
   config:
     bibtex_reference_style: author_year
@@ -18,6 +15,13 @@ sphinx:
     thebe_config:
       use_thebe_lite: true
       exclude_patterns: ["**/_*.yml", "**/*.md", "**/*.ipynb"]      
+    html_theme_options:
+      repository_url: "https://gitlab.tudelft.nl/interactivetextbooks-citg/engineering-systems-optimization"
+      use_repository_button: true
+      use_issues_button : true
+      launch_buttons:
+          thebe: true
+
   extra_extensions:
   - sphinx_inline_tabs
   - sphinx.ext.imgconverter
@@ -28,3 +32,4 @@ bibtex_bibfiles:
 
 html:
   extra_footer: <img src="https://i.creativecommons.org/l/by/4.0/88x31.png" width="88px">
+  
