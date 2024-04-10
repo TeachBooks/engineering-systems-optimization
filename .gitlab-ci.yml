@@ -38,6 +38,7 @@ build-book:
   before_script:
     - docker info
   script:
+    - if [ "$TAG" = "$TAG_LATEST" ]; then sed --in-place=".bak" '/# START DRAFT/,/# END DRAFT/{//!d}' book/_config.yml; fi
     - docker build -t $TAG .
     - docker push $TAG
 
