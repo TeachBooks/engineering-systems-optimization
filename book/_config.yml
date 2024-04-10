@@ -1,7 +1,7 @@
 title: Engineering Systems Optimization
 author: Tom van Woudenberg
 email: T.R.vanWoudenberg@tudelft.nl 
-logo: figures/TUDelft_logo_rgb.png
+logo: pages/figures/logo.jpg
 
 execute:
   execute_notebooks: 'off'
