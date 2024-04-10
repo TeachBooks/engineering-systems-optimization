@@ -28,5 +28,3 @@ bibtex_bibfiles:
 
 html:
   extra_footer: <img src="https://i.creativecommons.org/l/by/4.0/88x31.png" width="88px">
-  comments:
-    hypothesis: true
