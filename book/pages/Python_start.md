@@ -43,7 +43,7 @@ Source: {cite:ts}`carprentries_download`
 ## Set up the environment
 Now we will make sure you have an environment to get started in this course. This year we will use Python 3.11, so we are going to make sure that’s installed and ready to go. Other Python packages that are not included in the base installation will be installed in your environment when we need to use them, to make sure we know exactly what is going on when working with code in this course.
 
-The following steps will create an Anaconda environment called optimizatoin and install Python 3.11. Even if you already have Python 3.11, it is still good practice to create a dedicated Anaconda environment for each of your major projects. Please make sure you have upgraded Anaconda before proceeding with these steps:
+The following steps will create an Anaconda environment called `optimization` and install Python version 3.11. Even if you already have Python 3.11, it is still good practice to create a dedicated Anaconda environment for each of your major projects. Please make sure you have upgraded Anaconda before proceeding with these steps:
 
 1. Open Anaconda prompt from the start menu
 2. Execute: `conda create -n optimization python=3.11 anaconda` (this may take several minutes)
