@@ -21,7 +21,6 @@ sphinx:
       exclude_patterns: ["**/_*.yml", "**/*.md", "**/*.ipynb"]      
     html_theme_options:
       repository_url: "https://gitlab.tudelft.nl/interactivetextbooks-citg/engineering-systems-optimization"
-      home_page_in_navbar : true
       baseurl : "https://teachbooks.tudelft.nl/engineering-systems-optimization/"
       use_repository_button: true
       use_issues_button : true
