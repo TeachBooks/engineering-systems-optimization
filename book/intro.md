@@ -6,7 +6,7 @@ This book includes interactive features!
 - Interactive quizzes: Some page include interactive 'H5p' quizzes. This allows you to check your understanding. Any interactions you have with this system are not stored, unless you login into H5p.
 - Python interactivity: Click {fa}`rocket` --> {guilabel}`Live Code` on the top right corner of interactive page to start up a python-kernel in your browser! Any interactions you do here are not stored. You can also download the page as a notebook to apply the content on your own computer.
 
-If you spot any mistakes, click on {fa}`gitlab` --> {fa}`lightbulb`, login with your NetID and report your issue.
+If you spot any mistakes, click on <i class="fa fa-gitlab" aria-hidden="true"></i> --> {fa}`lightbulb`, login with your NetID and report your issue.
 
 ## Bibliography
 
