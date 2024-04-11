@@ -14,6 +14,4 @@ parts:
       sections :
       - file: pages/Unconstrained_optimization_example_1
       - file: pages/Unconstrained_optimization_example_2
-# START REMOVE-FROM-PUBLISH
     - file: pages/linear_constrained_optimization
-# END REMOVE-FROM-PUBLISH
