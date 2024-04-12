@@ -3,14 +3,14 @@
 In this chapter, we'll cover how to apply `scipy.optimize.minimize` to unconstrained optimization problems. As a reminder, unconstrained optimization considers:
 
 ```{math}
-:label: unconstrained_optimizatino
+:label: unconstrained_optimization
 
 \mathop {\min }\limits_x f\left( x \right)
 ```
 with $x$ the design variable of length $n$ and $f$ the objective function.
 
 
-
+(method_unconstrained)=
 ## Method
 In this course, we're making use of the function `scipy.optimize.minimize`. The documentation of this function is available here: 
 https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.minimize.html. In this course we'll cover only the relevant parts.
@@ -20,7 +20,7 @@ For unconstrained optimization we need to run at least `scipy.optimize.minimize(
 - `x0`, the initial guess for our design variable $x$. It needs to be a `ndarray` with length $n$
 
 The function `scipy.optimize.minimize` outputs an object `scipy.optimize.OptimizeResult`. with:
-- `scipy.optimize.OptimizeResult.x` the optimized solution of the design variable `x`. It is a `ndarray` with length $n$
+- `scipy.optimize.OptimizeResult.x` the optimized solution of the design variable $x$. It is a `ndarray` with length $n$
 - `scipy.optimize.OptimizeResult.success`, a indication whether or not the optimizer was executed succesfully. It is a `bool`, indicating `True` or `False`
 - `scipy.optimize.OptimizeResult.message`, a message describing the cause of termination of the optimizatino algorithm. It is a `str`.
 - `scipy.optimize.OptimizeResult.fun`, the values of the optimized objective function $f$. It is a `int` or `float`
