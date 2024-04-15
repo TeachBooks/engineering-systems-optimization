@@ -10,6 +10,7 @@ execute:
 html:
   favicon : "pages/figures/favicon.ico"
   baseurl :  "https://teachbooks.tudelft.nl/engineering-systems-optimization/"
+  home_page_in_navbar       : true
 
 sphinx:
   config:

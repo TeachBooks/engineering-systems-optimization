@@ -1,6 +1,11 @@
 format: jb-book
 root: intro
 parts:
+  - caption: General
+    numbered: false
+    chapters:
+    - file: intro.md
+    - file: bib.md
   - caption: Getting started with Python
     numbered: 1
     chapters:

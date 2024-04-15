@@ -10,11 +10,6 @@ Is something unclear of do you spot a mistake? Ask your question / report the mi
 
 If you'd like to make this book more personal by adding (private or public) annotations I can recommend the [Hypothesis extension](https://web.hypothes.is/start/). This is only for your own use, I won't monitor public post on this platform.
 
-## Bibliography
-
-```{bibliography}
-```
-
 ## Questions, discussions and comments
 <script src="https://utteranc.es/client.js"
         repo="Tom-van-Woudenberg/CME4501"
