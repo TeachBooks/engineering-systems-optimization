@@ -1,20 +1,17 @@
 format: jb-book
 root: intro
 parts:
-  - caption: General
+  - caption: Introduction
     numbered: false
     chapters:
     - file: instructions.md
-    - file: bib.md
-  - caption: Getting started with Python
-    numbered: 1
-    chapters:
     - file: pages/Python_start
     - file: pages/Python_start_2
+    - file: pages/Python_start_3
+    - file: bib.md
   - caption: Optimization using Python
     numbered: 1
     chapters:
-    - file: pages/Python_start_3
     - file: pages/Unconstrained_optimization
       sections :
       - file: pages/Unconstrained_optimization_example_1
