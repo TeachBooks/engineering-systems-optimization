@@ -29,3 +29,12 @@ The function `scipy.optimize.minimize` outputs an object `scipy.optimize.Optimiz
 :::{card} Test Yourself
 <iframe src="https://tudelft.h5p.com/content/1292011279864402367/embed" aria-label="Example 1_method" width="1088" height="637" frameborder="0" allowfullscreen="allowfullscreen" allow="autoplay *; geolocation *; microphone *; camera *; midi *; encrypted-media *"></iframe><script src="https://tudelft.h5p.com/js/h5p-resizer.js" charset="UTF-8"></script>
 :::
+
+## Questions, discussions and comments
+<script src="https://utteranc.es/client.js"
+        repo="Tom-van-Woudenberg/CME4501"
+        issue-term="pathname"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script>
