@@ -13,7 +13,7 @@ If you'd like to make this book more personal by adding (private or public) anno
 ## Questions, discussions and comments
 <script src="https://utteranc.es/client.js"
         repo="TeachBooks/engineering-systems-optimization"
-        issue-term="pathname"
+        issue-term="title"
         theme="github-light"
         crossorigin="anonymous"
         async>

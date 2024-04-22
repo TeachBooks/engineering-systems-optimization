@@ -48,7 +48,7 @@ If you've no experience in using Python, please work through [this material](htt
 ## Questions, discussions and comments
 <script src="https://utteranc.es/client.js"
         repo="TeachBooks/engineering-systems-optimization"
-        issue-term="pathname"
+        issue-term="title"
         theme="github-light"
         crossorigin="anonymous"
         async>
