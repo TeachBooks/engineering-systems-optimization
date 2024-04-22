@@ -11,6 +11,7 @@ In this chapter, we'll cover how to apply `scipy.optimize.linprog` to linear con
   &  &  x_i^l \le {x_i} \le x_i^u & i = 1,n \cr} 
 ```
 with:
+- $f$ the linear objective function
 - $x$ the $n$ design variables
 - $g_j(x)$ the $m$ linear inequality constraints
 - $h_k(x)$ the $p$ linear inequality constraints
