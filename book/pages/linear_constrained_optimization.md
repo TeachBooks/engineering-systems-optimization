@@ -55,7 +55,7 @@ Again, we won't use all options, but a minimum requirement for our problem is th
 
  ## Questions, discussions and comments
 <script src="https://utteranc.es/client.js"
-        repo="Tom-van-Woudenberg/CME4501"
+        repo="TeachBooks/engineering-systems-optimization"
         issue-term="pathname"
         theme="github-light"
         crossorigin="anonymous"
