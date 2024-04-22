@@ -16,13 +16,13 @@ In this course, we're making use of the function `scipy.optimize.minimize`. The 
 https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.minimize.html. In this course we'll cover only the relevant parts.
 
 For unconstrained optimization we need to run at least `scipy.optimize.minimize(fun, x0, ...)` with:
-- `fun`, the objective function $f\left(x\right)$ to be minimized. `fun` is a callable. The `scipy.optmize.minimize` function takes care of defining and inputting our design variable $x$.
+- `fun`, the objective function $f\left(x\right)$ to be minimized. `fun` is a callable. The `scipy.optimize.minimize` function takes care of defining and inputting our design variable $x$.
 - `x0`, the initial guess for our design variable $x$. It needs to be a `ndarray` with length $n$
 
 The function `scipy.optimize.minimize` outputs an object `scipy.optimize.OptimizeResult`. with:
 - `scipy.optimize.OptimizeResult.x` the optimized solution of the design variable $x$. It is a `ndarray` with length $n$
-- `scipy.optimize.OptimizeResult.success`, a indication whether or not the optimizer was executed succesfully. It is a `bool`, indicating `True` or `False`
-- `scipy.optimize.OptimizeResult.message`, a message describing the cause of termination of the optimizatino algorithm. It is a `str`.
+- `scipy.optimize.OptimizeResult.success`, a indication whether or not the optimizer was executed successfully. It is a `bool`, indicating `True` or `False`
+- `scipy.optimize.OptimizeResult.message`, a message describing the cause of termination of the optimization algorithm. It is a `str`.
 - `scipy.optimize.OptimizeResult.fun`, the values of the optimized objective function $f$. It is a `int` or `float`
 - `scipy.optimize.OptimizeResult.nit`, the number of iteration performed by the optimizer. It is a `int`
 
