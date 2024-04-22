@@ -1,5 +1,7 @@
 # How to use this book
 
+This is the `2023`-version of the book. Go to [/engineering-systems-optimization](https://teachbooks.github.io/engineering-systems-optimization) to view the most recent version of this book, or adapt the year in [/engineering-systems-optimization/2023](https://teachbooks.github.io/engineering-systems-optimization/2023) to the year when you took the course.
+
 This book includes interactive features!
 - Interactive quizzes: Some page include interactive 'H5p' quizzes. This allows you to check your understanding. Any interactions you have with this system are not stored, unless you login into H5p.
 - Python interactivity: Click {fa}`rocket` --> {guilabel}`Live Code` on the top right corner of interactive page to start up a python-kernel in your browser! Any interactions you do here are not stored. You can also download the page as a notebook to apply the content on your own computer.
@@ -10,7 +12,7 @@ If you'd like to make this book more personal by adding (private or public) anno
 
 ## Questions, discussions and comments
 <script src="https://utteranc.es/client.js"
-        repo="Tom-van-Woudenberg/CME4501"
+        repo="TeachBooks/engineering-systems-optimization"
         issue-term="pathname"
         theme="github-light"
         crossorigin="anonymous"
