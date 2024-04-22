@@ -16,7 +16,7 @@ In this course, we're making use of the function `scipy.optimize.minimize`. The 
 https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.minimize.html. In this course we'll cover only the relevant parts.
 
 For unconstrained optimization we need to run at least `scipy.optimize.minimize(fun, x0, ...)` with:
-- `fun`, the objective function $f(x)$ to be minimized. `fun` is a callable. The `scipy.optmize.minimize` function takes care of defining and inputting our design variable $x$.
+- `fun`, the objective function $f\left(x\right)$ to be minimized. `fun` is a callable. The `scipy.optmize.minimize` function takes care of defining and inputting our design variable $x$.
 - `x0`, the initial guess for our design variable $x$. It needs to be a `ndarray` with length $n$
 
 The function `scipy.optimize.minimize` outputs an object `scipy.optimize.OptimizeResult`. with:
