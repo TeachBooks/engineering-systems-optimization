@@ -11,11 +11,11 @@ In this chapter, we'll cover how to apply `scipy.optimize.linprog` to linear con
   &  &  x_i^l \le {x_i} \le x_i^u & i = 1,n \cr} 
 ```
 with:
-- $f\left(x\right)$ the linear objective function
-- $x$ the $n$ design variables
-- $g_j\left(x\right)$ the $m$ linear inequality constraints
-- $h_k\left(x\right)$ the $p$ linear inequality constraints
-- $x_k^l$ and $x_k^u$ the $n$ low er and upper bounds of the design variable
+- $f\left(x\right)$, the linear objective function
+- $x$, the $n$ design variables
+- $g_j\left(x\right)$, the $m$ linear inequality constraints
+- $h_k\left(x\right)$, the $p$ linear inequality constraints
+- $x_k^l$ and $x_k^u$, the $n$ low er and upper bounds of the design variable
 
 Because all functions are linear, this problem can be rewritten as:
 
@@ -29,13 +29,13 @@ Because all functions are linear, this problem can be rewritten as:
   &  &  x_i^l \le {x_i} \le x_i^u & i = 1,n \cr} 
 ```
 with:
-- $x$ the $n$ design variables
-- $c$ the $n$ coefficients of the linear objective function
-- $A_{ub}$ the inequality constraint matrix of $m$ inequality constraints
-- $b_{ub}$ the inequality constraint vector of $m$ inequality constraints
-- $A_{eq}$ the equality constraint matrix of $p$ equality constraints
-- $b_{eq}$ the equality constraint vector of $p$ equality constraints
-- $x_i^l$ and $x_i^u$ the $n$ lower and upper bounds of the design variable
+- $x$, the $n$ design variables
+- $c$, the $n$ coefficients of the linear objective function
+- $A_{ub}$, the inequality constraint matrix of $m$ inequality constraints
+- $b_{ub}$, the inequality constraint vector of $m$ inequality constraints
+- $A_{eq}$, the equality constraint matrix of $p$ equality constraints
+- $b_{eq}$, the equality constraint vector of $p$ equality constraints
+- $x_i^l$ and $x_i^u$, the $n$ lower and upper bounds of the design variable
 
 ## Method
 For linear programs, we can use the function `scipy.optimize.linprog`. In contrast to `scipy.optimize.minimize`, this function is limited to linear functions. The documentation of this function is available here: https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.linprog.html. In this course we'll cover only the relevant parts.
