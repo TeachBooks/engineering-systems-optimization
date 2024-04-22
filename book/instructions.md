@@ -1,6 +1,6 @@
 # How to use this book
 
-This is the `2023`-version of the book. Go to [/engineering-systems-optimization](https://teachbooks.github.io/engineering-systems-optimization) to view the most recent version of this book, or adapt the year in [/engineering-systems-optimization/2023](https://teachbooks.github.io/engineering-systems-optimization/2023) to the year when you took the course.
+This is the `2023-2024`-version of the book. Go to [/engineering-systems-optimization](https://teachbooks.github.io/engineering-systems-optimization) to view the most recent version of this book, or adapt the year in [/engineering-systems-optimization/2023](https://teachbooks.github.io/engineering-systems-optimization/2023) to the year when you took the course.
 
 This book includes interactive features!
 - Interactive quizzes: Some page include interactive 'H5p' quizzes. This allows you to check your understanding. Any interactions you have with this system are not stored, unless you login into H5p.
