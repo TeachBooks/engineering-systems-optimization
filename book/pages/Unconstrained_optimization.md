@@ -33,7 +33,7 @@ The function `scipy.optimize.minimize` outputs an object `scipy.optimize.Optimiz
 ## Questions, discussions and comments
 <script src="https://utteranc.es/client.js"
         repo="TeachBooks/engineering-systems-optimization"
-        issue-term="pathname"
+        issue-term="title"
         theme="github-light"
         crossorigin="anonymous"
         async>

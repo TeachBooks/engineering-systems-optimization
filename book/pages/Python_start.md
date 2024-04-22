@@ -56,8 +56,8 @@ Source: {cite:ts}`mude_getting_started`
 
 ## Questions, discussions and comments
 <script src="https://utteranc.es/client.js"
-        repo="Tom-van-Woudenberg/CME4501"
-        issue-term="pathname"
+        repo="TeachBooks/engineering-systems-optimization"
+        issue-term="title"
         theme="github-light"
         crossorigin="anonymous"
         async>
