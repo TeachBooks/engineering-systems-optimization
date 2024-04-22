@@ -17,7 +17,5 @@ parts:
       - file: pages/Unconstrained_optimization_example_1
       - file: pages/Unconstrained_optimization_example_2
     - file: pages/linear_constrained_optimization
-    # START REMOVE-FROM-PUBLISH
       sections:
       - file: pages/linear_constrained_optimization_example
-    # END REMOVE-FROM-PUBLISH
