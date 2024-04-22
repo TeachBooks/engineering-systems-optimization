@@ -7,7 +7,9 @@ In this chapter, we'll cover how to apply `scipy.optimize.minimize` to unconstra
 
 \mathop {\min }\limits_x f\left( x \right)
 ```
-with $x$ the design variable of length $n$ and $f$ the objective function.
+with:
+- $x$: the design variable of length $n$
+- $f$: the objective function.
 
 
 (method_unconstrained)=
