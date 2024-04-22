@@ -18,17 +18,19 @@ with:
 - $x_k^l$ and $x_k^u$ the $n$ low er and upper bounds of the design variable
 
 ## Method
-For linear programs, we can use the function `scipy.optimize.linprog`. In contrast to `scipy.optimize.minimize`, this function is limited to linear functions. The documentation of this function is available here: https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.linprog.html. In this course we'll cover only the relevant parts.
+For linear programs, we can use the function `scipy.optimize.minimize` again. The documentation of this function is available here: 
+https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.minimize.html. In this course we'll cover only the relevant parts.
 
-Again, we won't use all options, but a minimum requirement for our problem is the command `scipy.optimize.linprog(c, A_ub, b_ub, A_eq, b_eq, bounds, ...)` with:
- - `c`, a onedimensional numpy array with the $n$ coefficients of the linear objective function$c$.
- - `A_ub`, a twodimensional numpy array with the $n$ coefficient of the $m$ linear inequality constraints matrix ${A_{ub}}$.
- - `b_ub`, a onedimensional numpy array with the upper bound of the $m$ linear inequality constraint vector ${b_{ub}}$. 
- - `A_eq`, a twodimensional numpy array with the $n$ coefficient of the $p$ linear equality constraints matrix ${A_{eq}}$.
--  `b_eq`, a onedimensional numpy array with value of the $p$ linear equality constraint vector ${b_{eq}}$. 
- - `Bounds`: A sequence of $i$ `(min, max)` pairs for each element in $x$, defining the minimum $x_i^l$ and maximum values $x_i^u$ of that decision variable.
+For unconstrained optimization we need to run at least `scipy.optimize.minimize(fun, x0, ...)` with:
+- `fun`, the objective function $f(x)$ to be minimized. `fun` is a callable. The `scipy.optmize.minimize` function takes care of defining and inputing our design variable $x$.
+- `x0`, the initial guess for our design variable $x$. It needs to be a `ndarray` with length $n$
 
- The function `scipy.optimize.linprog` outputs an object `scipy.optimize.OptimizeResult` similar as `scipy.optimize.minimize` explained for [unconstrained optimization](method_unconstrained).
+The function `scipy.optimize.minimize` outputs an object `scipy.optimize.OptimizeResult`. with:
+- `scipy.optimize.OptimizeResult.x` the optimized solution of the design variable $x$. It is a `ndarray` with length $n$
+- `scipy.optimize.OptimizeResult.success`, a indication whether or not the optimizer was executed succesfully. It is a `bool`, indicating `True` or `False`
+- `scipy.optimize.OptimizeResult.message`, a message describing the cause of termination of the optimizatino algorithm. It is a `str`.
+- `scipy.optimize.OptimizeResult.fun`, the values of the optimized objective function $f$. It is a `int` or `float`
+- `scipy.optimize.OptimizeResult.nit`, the number of iteration performed by the optimizer. It is a `int`
 
  :::{card} Test Yourself
  <iframe src="https://tudelft.h5p.com/content/1292246146700299097/embed" aria-label="Method sizes" width="1088" height="637" frameborder="0" allowfullscreen="allowfullscreen" allow="autoplay *; geolocation *; microphone *; camera *; midi *; encrypted-media *"></iframe><script src="https://tudelft.h5p.com/js/h5p-resizer.js" charset="UTF-8"></script>
