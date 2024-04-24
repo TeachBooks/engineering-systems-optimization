@@ -46,7 +46,7 @@ Again, we won't use all options, but a minimum requirement for our problem is th
  - `b_ub`, a onedimensional numpy array with the upper bound of the $m$ linear inequality constraint vector ${b_{ub}}$. 
  - `A_eq`, a twodimensional numpy array with the $n$ coefficient of the $p$ linear equality constraints matrix ${A_{eq}}$.
 -  `b_eq`, a onedimensional numpy array with value of the $p$ linear equality constraint vector ${b_{eq}}$. 
- - `Bounds`: A sequence of $i$ `(min, max)` pairs for each element in $x$, defining the minimum $x_i^l$ and maximum values $x_i^u$ of that decision variable.
+ - `Bounds`: A sequence of $i$ `(min, max)` pairs for each element in $x$, defining the minimum $x_i^l$ and maximum values $x_i^u$ of that decision variable. Use `None` to indicate that there is no bound.
 
  The function `scipy.optimize.linprog` outputs an object `scipy.optimize.OptimizeResult` similar as `scipy.optimize.minimize` explained for [unconstrained optimization](method_unconstrained).
 
