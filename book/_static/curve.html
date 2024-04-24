@@ -82,6 +82,24 @@
             };
 
             Plotly.newPlot('outputContainer', data, layout);
+
+            // Add arrows to the plot
+            for (var i = 0; i < xi.length; i++) {
+                var arrow = {
+                    x: [xi[i], xi[i]],
+                    y: [yi[i], Math.max(Math.min(a * xi[i] ** b + c, 1), 0)],
+                    mode: 'lines',
+                    line: {
+                        color: 'red',
+                        width: 1,
+                        dash: 'dash'
+                    },
+                    showlegend: false
+                };
+                data.push(arrow);
+            }
+
+            Plotly.update('outputContainer', data, layout);
         }
 
         var sliderContainer = document.getElementById("sliderContainer");
