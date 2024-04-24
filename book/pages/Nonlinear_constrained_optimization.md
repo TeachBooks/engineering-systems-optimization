@@ -39,15 +39,11 @@ For linear constraints, the constraint function is stored in a matrix again: `sc
 
 Please not that unlike with linear constraints optimization, the right-hand-side of the constraints are not stored in an upper bound vector, but defined with `lb` and `ub`.
 
-ADD QUESTION HERE on whether this is more flexibel
-Add question on what is the size of lb and ub (M=P)
+The function `scipy.optimize.linprog` outputs an object `scipy.optimize.OptimizeResult` similar as `scipy.optimize.minimize` explained for [unconstrained optimization](method_unconstrained).
 
 :::{card} Test yourself
 <iframe src="https://tudelft.h5p.com/content/1292253866845965907/embed" aria-label="Nonlinear constrained optimization method" width="1088" height="637" frameborder="0" allowfullscreen="allowfullscreen" allow="autoplay *; geolocation *; microphone *; camera *; midi *; encrypted-media *"></iframe><script src="https://tudelft.h5p.com/js/h5p-resizer.js" charset="UTF-8"></script>
 :::
-
-The function `scipy.optimize.linprog` outputs an object `scipy.optimize.OptimizeResult` similar as `scipy.optimize.minimize` explained for [unconstrained optimization](method_unconstrained).
-
 
  ## Questions, discussions and comments
 <script src="https://utteranc.es/client.js"
