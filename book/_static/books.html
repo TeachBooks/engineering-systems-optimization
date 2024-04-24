@@ -15,11 +15,25 @@
             grid-gap: 10px;
             width: 100%;
         }
+        .output {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+        .output p {
+            margin: 5px 0;
+        }
+        .output .emoji {
+            font-size: 20px;
+            margin-right: 5px;
+        }
     </style>
 </head>
 <body>
     <div id="sliderContainer" class="slider-container"></div>
-    <div id="outputContainer"></div>
+    <div id="outputContainer" class="output"></div>
 
     <script>
         var c = [7, 11, 16, 26, 7, 13, 5, 20, 16, 28, 7, 12];
@@ -46,27 +60,27 @@
             output.innerHTML = "";
 
             var totalCosts = numeric.dot(c, x);
-            output.innerHTML += "Total costs: €" + totalCosts + "<br>";
+            output.innerHTML += "<p><strong><span style='font-size: 24px;'>Total costs: €" + totalCosts + "</span></strong></p>";
 
             for (var i = 0; i < 3; i++) {
                 var stock = numeric.dot(A_ub[i], x);
                 if (stock > b_ub[i]) {
-                    output.innerHTML += "🤯 Out of stock @ 📚" + ["Amsterdam", "Den Haag", "Rotterdam"][i] + ": " + (stock - b_ub[i]) + " too many books ordered<br>";
+                    output.innerHTML += "<p><span class='emoji'>🤯</span> Out of stock @ 📚" + ["Amsterdam", "Den Haag", "Rotterdam"][i] + ": " + (stock - b_ub[i]) + " too many books ordered</p>";
                 } else if (stock > 0) {
-                    output.innerHTML += "🤑 Doing business @ 📚" + ["Amsterdam", "Den Haag", "Rotterdam"][i] + "<br>";
+                    output.innerHTML += "<p><span class='emoji'>🤑</span> Doing business @ 📚" + ["Amsterdam", "Den Haag", "Rotterdam"][i] + "</p>";
                 } else {
-                    output.innerHTML += "💸 bankrupt @ 📚" + ["Amsterdam", "Den Haag", "Rotterdam"][i] + "<br>";
+                    output.innerHTML += "<p><span class='emoji'>💸</span> bankrupt @ 📚" + ["Amsterdam", "Den Haag", "Rotterdam"][i] + "</p>";
                 }
             }
 
             for (var i = 0; i < 4; i++) {
                 var received = numeric.dot(A_eq[i], x);
                 if (received > b_eq[i]) {
-                    output.innerHTML += "😠 didn't receive the correct amount of books @ 🛒" + ["Haarlem", "Utrecht", "Delft", "Breda"][i] + ": " + (received - b_eq[i]) + " too many books received<br>";
+                    output.innerHTML += "<p><span class='emoji'>😠</span> didn't receive the correct amount of books @ 🛒" + ["Haarlem", "Utrecht", "Delft", "Breda"][i] + ": " + (received - b_eq[i]) + " too many books received</p>";
                 } else if (received < b_eq[i]) {
-                    output.innerHTML += "😠 didn't receive the correct amount of books @ 🛒" + ["Haarlem", "Utrecht", "Delft", "Breda"][i] + ": " + (b_eq[i] - received) + " too few books received<br>";
+                    output.innerHTML += "<p><span class='emoji'>😠</span> didn't receive the correct amount of books @ 🛒" + ["Haarlem", "Utrecht", "Delft", "Breda"][i] + ": " + (b_eq[i] - received) + " too few books received</p>";
                 } else {
-                    output.innerHTML += "👌 received the correct amount of books @ 🛒" + ["Haarlem", "Utrecht", "Delft", "Breda"][i] + "<br>";
+                    output.innerHTML += "<p><span class='emoji'>👌</span> received the correct amount of books @ 🛒" + ["Haarlem", "Utrecht", "Delft", "Breda"][i] + "</p>";
                 }
             }
         }
