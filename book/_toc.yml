@@ -19,3 +19,4 @@ parts:
     - file: pages/linear_constrained_optimization
       sections:
       - file: pages/linear_constrained_optimization_example
+    - file: more_will_follow
