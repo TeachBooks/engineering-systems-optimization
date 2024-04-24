@@ -7,13 +7,13 @@
         .slider {
             display: block;
             margin-bottom: 10px;
-            width: 100%; /* Add this line to set the width of the sliders to 100% */
+            width: 100%;
         }
         .slider-container {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
+            grid-template-columns: repeat(6, 1fr);
             grid-gap: 10px;
-            width: 100%; /* Add this line to set the width of the sliders to 100% */
+            width: 100%;
         }
     </style>
 </head>
@@ -39,6 +39,7 @@
             var x = [];
             for (var i = 1; i <= 12; i++) {
                 x.push(document.getElementById("x_" + i).value);
+                document.getElementById("x_" + i + "_value").textContent = x[i-1] + " books"; // Update the value display with the unit "books"
             }
 
             var output = document.getElementById("outputContainer");
@@ -80,15 +81,19 @@
             slider.value = 0;
             slider.step = 1;
             slider.id = "x_" + i;
-            slider.oninput = eval; // Trigger evaluation function on slider value change
-            slider.classList.add("slider"); // Add the "slider" class to the slider element
+            slider.oninput = eval;
+            slider.classList.add("slider");
             var label = document.createElement("label");
-            label.innerHTML = routes[i-1]; // Set the label text to the corresponding route
-            label.setAttribute("for", "x_" + i); // Associate the label with the slider
+            label.innerHTML = routes[i-1];
+            label.setAttribute("for", "x_" + i);
+
+            var valueDisplay = document.createElement("span"); // Create a span element for value display
+            valueDisplay.id = "x_" + i + "_value"; // Set the id for value display
+            valueDisplay.textContent = slider.value + " books"; // Set the initial value with the unit "books"
 
             sliderContainer.appendChild(label);
             sliderContainer.appendChild(slider);
-
+            sliderContainer.appendChild(valueDisplay); // Append the value display element
         }
 
         var outputContainer = document.getElementById("outputContainer");
