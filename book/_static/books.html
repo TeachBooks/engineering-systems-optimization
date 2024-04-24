@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Find the optimum solution yourself!</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/numeric/1.2.6/numeric.min.js"></script>
+    <style>
+        .slider {
+            display: block;
+            margin-bottom: 10px;
+            width: 100%; /* Add this line to set the width of the sliders to 100% */
+        }
+        .slider-container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-gap: 10px;
+            width: 30%; /* Add this line to set the width of the sliders to 100% */
+        }
+    </style>
+</head>
+<body>
+    <div id="sliderContainer" class="slider-container"></div>
+    <div id="outputContainer"></div>
+
+    <script>
+        var c = [7, 11, 16, 26, 7, 13, 5, 20, 16, 28, 7, 12];
+
+        var A_ub = [[1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0],
+                    [0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0],
+                    [0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1]];
+        var b_ub = [250, 130, 235];
+
+        var A_eq = [[1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0],
+                    [0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0],
+                    [0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0],
+                    [0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1]];
+        var b_eq = [70, 230, 240, 70];
+
+        function eval() {
+            var x = [];
+            for (var i = 1; i <= 12; i++) {
+                x.push(document.getElementById("x_" + i).value);
+            }
+
+            var output = document.getElementById("outputContainer");
+            output.innerHTML = "";
+
+            var totalCosts = numeric.dot(c, x);
+            output.innerHTML += "Total costs: €" + totalCosts + "<br>";
+
+            for (var i = 0; i < 3; i++) {
+                var stock = numeric.dot(A_ub[i], x);
+                if (stock > b_ub[i]) {
+                    output.innerHTML += "🤯 Out of stock @ 📚" + ["Amsterdam", "Den Haag", "Rotterdam"][i] + ": " + (stock - b_ub[i]) + " too many books ordered<br>";
+                } else if (stock > 0) {
+                    output.innerHTML += "🤑 Doing business @ 📚" + ["Amsterdam", "Den Haag", "Rotterdam"][i] + "<br>";
+                } else {
+                    output.innerHTML += "💸 bankrupt @ 📚" + ["Amsterdam", "Den Haag", "Rotterdam"][i] + "<br>";
+                }
+            }
+
+            for (var i = 0; i < 4; i++) {
+                var received = numeric.dot(A_eq[i], x);
+                if (received > b_eq[i]) {
+                    output.innerHTML += "😠 didn't receive the correct amount of books @ 🛒" + ["Haarlem", "Utrecht", "Delft", "Breda"][i] + ": " + (received - b_eq[i]) + " too many books received<br>";
+                } else if (received < b_eq[i]) {
+                    output.innerHTML += "😠 didn't receive the correct amount of books @ 🛒" + ["Haarlem", "Utrecht", "Delft", "Breda"][i] + ": " + (b_eq[i] - received) + " too few books received<br>";
+                } else {
+                    output.innerHTML += "👌 received the correct amount of books @ 🛒" + ["Haarlem", "Utrecht", "Delft", "Breda"][i] + "<br>";
+                }
+            }
+        }
+
+        var sliderContainer = document.getElementById("sliderContainer");
+        var routes = ["Amsterdam ➡️ Haarlem","Amsterdam ➡️ Utrecht","Amsterdam ➡️ Delft","Amsterdam ➡️ Breda","Den Haag ➡️ Haarlem","Den Haag ➡️ Utrecht","Den Haag ➡️ Delft","Den Haag ➡️ Breda","Rotterdam ➡️ Haarlem","Rotterdam ➡️ Utrecht","Rotterdam ➡️ Delft","Rotterdam ➡️ Breda"];
+        for (var i = 1; i <= 12; i++) {
+            var slider = document.createElement("input");
+            slider.type = "range";
+            slider.min = 0;
+            slider.max = 300;
+            slider.value = 0;
+            slider.step = 1;
+            slider.id = "x_" + i;
+            slider.oninput = eval; // Trigger evaluation function on slider value change
+            slider.classList.add("slider"); // Add the "slider" class to the slider element
+            var label = document.createElement("label");
+            label.innerHTML = routes[i-1]; // Set the label text to the corresponding route
+            label.setAttribute("for", "x_" + i); // Associate the label with the slider
+
+            sliderContainer.appendChild(label);
+            sliderContainer.appendChild(slider);
+
+        }
+
+        var outputContainer = document.getElementById("outputContainer");
+        var button = document.createElement("button");
+        button.innerHTML = "Evaluate";
+        button.onclick = eval;
+        outputContainer.appendChild(button);
+    </script>
+</body>
+</html>
