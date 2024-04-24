@@ -22,7 +22,7 @@ sphinx:
       use_thebe_lite: true
       exclude_patterns: ["**/_*.yml", "**/*.md", "**/*.ipynb"]      
     html_theme_options:
-      repository_url: "https://github.com/TeachBooks/engineering-systems-optimization"
+      repository_url: "https://gitlab.tudelft.nl/interactivetextbooks-citg/engineering-systems-optimization"
       use_repository_button: true
       use_issues_button : true
       launch_buttons:
