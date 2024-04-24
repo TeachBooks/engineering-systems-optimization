@@ -94,7 +94,7 @@
             input.step = slider.step;
             input.id = slider.id;
             input.oninput = function() {
-                document.getElementById(slider.id + "_value").textContent = this.value;
+                document.getElementById(slider.id + "_value").textContent = this.value  + " m";
                 eval();
             };
             input.classList.add("slider");
@@ -106,7 +106,7 @@
 
             var valueDisplay = document.createElement("span"); // Create a span element for value display
             valueDisplay.id = slider.id + "_value"; // Set the id for value display
-            valueDisplay.textContent = slider.value; // Set the initial value
+            valueDisplay.textContent = slider.value + " m"; // Set the initial value
 
             sliderContainer.appendChild(label);
             sliderContainer.appendChild(input);
