@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Find the optimum solution yourself!</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/numeric/1.2.6/numeric.min.js"></script>
+    <style>
+        .slider {
+            display: block;
+            margin-bottom: 10px;
+            width: 100%;
+        }
+        .slider-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-gap: 10px;
+            width: 100%;
+        }
+        .output {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+        .output p {
+            margin: 5px 0;
+        }
+        .output .emoji {
+            font-size: 20px;
+            margin-right: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div id="sliderContainer" class="slider-container"></div>
+    <div id="outputContainer" class="output"></div>
+
+    <script>
+        function func(x) {
+            var vol = x[0] * x[1] * x[2];
+            return vol;
+        }
+
+        function nonlinconfun(x) {
+            var c1 = 0.8 - x[0] * x[1];
+            var c2 = 0.8 - x[0] * x[2];
+            var c3 = 0.8 - x[1] * x[2];
+            var c4 = 3000 - 2500 * x[0] * x[1] * x[2];
+            return [c1, c2, c3, c4];
+        }
+
+        function eval() {
+            var x_1 = parseFloat(document.getElementById("x_1").value);
+            var x_2 = parseFloat(document.getElementById("x_2").value);
+            var x_3 = parseFloat(document.getElementById("x_3").value);
+            var x = [x_1, x_2, x_3];
+
+            var output = document.getElementById("outputContainer");
+            output.innerHTML = "";
+
+            var vol = func(x);
+            output.innerHTML += "<p><strong><span style='font-size: 24px;'>Objective function: " + vol.toFixed(3) + " m<sup>3</sup></span></strong></p>";
+
+            var constraints = nonlinconfun(x);
+            for (var i = 0; i < constraints.length; i++) {
+                if (i === 3) {
+                    if (constraints[i] < 0) {
+                        output.innerHTML += "<p><span class='emoji'>👍</span> Constraint function " + (i + 1) + ": " + constraints[i].toFixed(0) + " kg</p>";
+                    } else {
+                        output.innerHTML += "<p><span class='emoji'>👎</span> Constraint function " + (i + 1) + ": " + constraints[i].toFixed(0) + " kg</p>";
+                    }
+                } else {
+                    if (constraints[i] < 0) {
+                        output.innerHTML += "<p><span class='emoji'>👍</span> Constraint function " + (i + 1) + ": " + constraints[i].toFixed(2) + " m<sup>2</sup></p>";
+                    } else {
+                        output.innerHTML += "<p><span class='emoji'>👎</span> Constraint function " + (i + 1) + ": " + constraints[i].toFixed(2) + " m<sup>2</sup></p>";
+                    }
+                }
+            }
+            }
+            var sliderContainer = document.getElementById("sliderContainer");
+            var sliders = [
+                { id: "x_1", min: 0, max: 5, value: 2, step: 0.01, description: "x<sub>1</sub>" },
+                { id: "x_2", min: 0, max: 5, value: 2, step: 0.01, description: "x<sub>2</sub>" },
+                { id: "x_3", min: 0, max: 5, value: 2, step: 0.01, description: "x<sub>3</sub>" }
+            ];
+
+        sliders.forEach(function(slider) {
+            var input = document.createElement("input");
+            input.type = "range";
+            input.min = slider.min;
+            input.max = slider.max;
+            input.value = slider.value;
+            input.step = slider.step;
+            input.id = slider.id;
+            input.oninput = function() {
+                document.getElementById(slider.id + "_value").textContent = this.value;
+                eval();
+            };
+            input.classList.add("slider");
+
+            var label = document.createElement("label");
+            label.innerHTML = slider.description;
+            label.setAttribute("for", slider.id);
+            label.style.textAlign = "right";
+
+            var valueDisplay = document.createElement("span"); // Create a span element for value display
+            valueDisplay.id = slider.id + "_value"; // Set the id for value display
+            valueDisplay.textContent = slider.value; // Set the initial value
+
+            sliderContainer.appendChild(label);
+            sliderContainer.appendChild(input);
+            sliderContainer.appendChild(valueDisplay); // Append the value display element
+        });
+
+        var outputContainer = document.getElementById("outputContainer");
+        var button = document.createElement("button");
+        button.innerHTML = "Evaluate";
+        button.onclick = eval;
+        outputContainer.appendChild(button);
+    </script>
+</body>
+</html>
