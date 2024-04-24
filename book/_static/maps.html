@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Profit Calculation</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/numeric/1.2.6/numeric.min.js"></script>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <style>
+        .slider {
+            display: block;
+            margin-bottom: 10px;
+            width: 100%;
+        }
+        .slider-container {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            grid-gap: 10px;
+            width: 100%;
+        }
+        .output {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+        .output p {
+            margin: 5px 0;
+        }
+        .output .emoji {
+            font-size: 20px;
+            margin-right: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div id="sliderContainer" class="slider-container"></div>
+    <div id="outputContainer" class="output"></div>
+
+    <script>
+        function func(n, truth) {
+            var n_range = numeric.linspace(0, 100, 100);
+            var profit = numeric.sub(numeric.mul(75, n_range), numeric.mul(numeric.sub(150, numeric.mul(0.01, numeric.pow(n_range, 2))), n_range));
+            var title = 'Negative profit for amount of bathmetry maps sold is € ' + (75 * n - (150 - 0.01 * Math.pow(n, 2)) * n).toFixed(2);
+
+            var data = [
+                {
+                    x: n_range,
+                    y: profit,
+                    type: 'scatter',
+                    mode: 'lines',
+                    name: 'Objective function',
+                    visible: truth ? true : 'legendonly'
+                },
+                {
+                    x: [n],
+                    y: [75 * n - (150 - 0.01 * Math.pow(n, 2)) * n],
+                    type: 'scatter',
+                    mode: 'markers',
+                    name: 'Selected point',
+                    marker: {
+                        size: 10 // Set the size of the marker to a larger value
+                    }
+                }
+            ];
+
+            var layout = {
+                title: title,
+                xaxis: {
+                    title: 'Number of bathmetry maps n sold (-)',
+                    range: [0, 100]
+                },
+                yaxis: {
+                    title: 'Negative profit (€)',
+                    range: [-3000, 3000]
+                },
+                showlegend: truth
+            };
+
+            Plotly.newPlot('outputContainer', data, layout);
+        }
+
+        var sliderContainer = document.getElementById("sliderContainer");
+        var sliders = [
+            { id: "n", min: 0, max: 100, value: 20, step: 1, description: "#maps n sold" }
+        ];
+
+        sliders.forEach(function(slider) {
+            var input = document.createElement("input");
+            input.type = "range";
+            input.min = slider.min;
+            input.max = slider.max;
+            input.value = slider.value;
+            input.step = slider.step;
+            input.id = slider.id;
+            input.oninput = function() {
+                document.getElementById(slider.id + "_value").textContent = this.value;
+                func(parseInt(this.value), document.getElementById("truth").checked);
+            };
+            input.classList.add("slider");
+
+            var label = document.createElement("label");
+            label.innerHTML = slider.description;
+            label.setAttribute("for", slider.id);
+            label.style.textAlign = "right";
+
+            var valueDisplay = document.createElement("span"); // Create a span element for value display
+            valueDisplay.id = slider.id + "_value"; // Set the id for value display
+            valueDisplay.textContent = slider.value; // Set the initial value
+
+            sliderContainer.appendChild(label);
+            sliderContainer.appendChild(input);
+            sliderContainer.appendChild(valueDisplay); // Append the value display element
+        });
+
+        var truthCheckbox = document.createElement("input");
+        truthCheckbox.type = "checkbox";
+        truthCheckbox.id = "truth";
+        truthCheckbox.checked = false;
+        truthCheckbox.onchange = function() {
+            func(parseInt(document.getElementById("n").value), this.checked);
+        };
+
+        var truthLabel = document.createElement("label");
+        truthLabel.innerHTML = "Show objective function";
+        truthLabel.setAttribute("for", "truth");
+        truthLabel.style.textAlign = "right";
+
+        sliderContainer.appendChild(truthLabel);
+        sliderContainer.appendChild(truthCheckbox);
+
+        var outputContainer = document.getElementById("outputContainer");
+        outputContainer.style.height = "400px";
+
+        // Call func with initial values
+        func(parseInt(document.getElementById("n").value), document.getElementById("truth").checked);
+    </script>
+</body>
+</html>
