@@ -24,7 +24,7 @@ https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.minimize.htm
 For unconstrained optimization we need to run at least `scipy.optimize.minimize(fun, x0, bounds, constraints, ...)` with:
 - `fun`, the function representing the objective function $f\left(x\right)$ to be minimized. `fun` is a callable. The `scipy.optimize.minimize` function takes care of defining and inputting our design variable $x$.
 - `x0`, the initial guess for our design variable $x$. It needs to be a `ndarray` with length $n$
-- `Bounds`: A sequence of $i$ `(min, max)` pairs for each element in $x$, defining the minimum $x_i^l$ and maximum values $x_i^u$ of that decision variable.
+- `Bounds`: A sequence of $i$ `(min, max)` pairs for each element in $x$, defining the minimum $x_i^l$ and maximum values $x_i^u$ of that decision variable. `None` is used to specify no bound.
 - `constraints`, a single or a list of constraint objective either being:
    - `scipy.optimize.LinearConstraint`
    - `scipy.optimize.NonlinearConstraint`
@@ -41,6 +41,10 @@ Please not that unlike with linear constraints optimization, the right-hand-side
 
 ADD QUESTION HERE on whether this is more flexibel
 Add question on what is the size of lb and ub (M=P)
+
+:::{card} Test yourself
+<iframe src="https://tudelft.h5p.com/content/1292253866845965907/embed" aria-label="Nonlinear constrained optimization method" width="1088" height="637" frameborder="0" allowfullscreen="allowfullscreen" allow="autoplay *; geolocation *; microphone *; camera *; midi *; encrypted-media *"></iframe><script src="https://tudelft.h5p.com/js/h5p-resizer.js" charset="UTF-8"></script>
+:::
 
 The function `scipy.optimize.linprog` outputs an object `scipy.optimize.OptimizeResult` similar as `scipy.optimize.minimize` explained for [unconstrained optimization](method_unconstrained).
 
