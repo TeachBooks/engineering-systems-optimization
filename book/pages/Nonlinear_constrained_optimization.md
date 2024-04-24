@@ -29,6 +29,8 @@ For unconstrained optimization we need to run at least `scipy.optimize.minimize(
    - `scipy.optimize.LinearConstraint`
    - `scipy.optimize.NonlinearConstraint`
 
+ADD QUESTION WHY REQUIRED
+
 As you can see, the constraints are stored in an object `scipy.optimize.LinearConstraint` and/or `scipy.optimize.NonlinearConstraint`. These function have the following input, for `scipy.optimize.NonlinearConstraint(fun, lb, ub, ...)`:
 - `fun`, the function representing the constraint function $g\left(x\right)$ or $h\left(x\right)$ to be minimized. Again, `fun` is a callable. The `scipy.optimize.minimize` function takes care of defining and inputting our design variable $x$.
 - `lb` and `ub`, two arrays containing the lower- and upper bounds for each of the constraint functions $g\left(x\right)$. This lower bound can be `-np.inf` or `np.inf` to represent one-sides constraints. If the lower- and upper bound are set to the same value, an equality function is modelled.
@@ -37,13 +39,14 @@ For linear constraints, the constraint function is stored in a matrix again: `sc
 - `A`, a twodimensional numpy array with the $n$ coefficient of the $m$ linear inequality constraints matrix ${A_{ub}}$.
 - `lb` and `ub` as for `scipy.optimize.NonlinearConstraint`
 
-Please not that unlike with linear constraints optimization, the right-hand-side of the constraints are not stored in an upper bound vector, but defined with `lb` and `ub`.
+Please note that unlike with linear constraints optimization, the right-hand-side of the constraints are not stored in an upper bound vector, but defined with `lb` and `ub`.
 
-The function `scipy.optimize.linprog` outputs an object `scipy.optimize.OptimizeResult` similar as `scipy.optimize.minimize` explained for [unconstrained optimization](method_unconstrained).
 
 :::{card} Test yourself
 <iframe src="https://tudelft.h5p.com/content/1292253866845965907/embed" aria-label="Nonlinear constrained optimization method" width="1088" height="637" frameborder="0" allowfullscreen="allowfullscreen" allow="autoplay *; geolocation *; microphone *; camera *; midi *; encrypted-media *"></iframe><script src="https://tudelft.h5p.com/js/h5p-resizer.js" charset="UTF-8"></script>
 :::
+
+The function `scipy.optimize.linprog` outputs an object `scipy.optimize.OptimizeResult` similar as `scipy.optimize.minimize` explained for [unconstrained optimization](method_unconstrained).
 
  ## Questions, discussions and comments
 <script src="https://utteranc.es/client.js"
