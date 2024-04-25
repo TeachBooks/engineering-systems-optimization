@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Profit Calculation</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/numeric/1.2.6/numeric.min.js"></script>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <style>
+        .slider {
+            display: block;
+            margin-bottom: 10px;
+            width: 100%;
+        }
+        .slider-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-gap: 10px;
+            width: 100%;
+        }
+        .output {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+        .output p {
+            margin: 5px 0;
+        }
+        .output .emoji {
+            font-size: 20px;
+            margin-right: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div id="sliderContainer" class="slider-container"></div>
+    <div id="outputContainer" class="output"></div>
+
+    <script>
+        function func(a, b, c) {
+            var xi = [0.97, 0, 0.5, 0.85, 0.7, 0.19, 0.41, 0.78];
+            var yi = [0.97, 0.06, 0.7, 0.74, 0.2, 0.34, 0.29, 0.94];
+            var x_range = numeric.linspace(0.0001, 1, 100);
+            
+            var y_est = numeric.add(numeric.mul(a, numeric.pow(xi, b)), c);
+            var error = numeric.sum(numeric.pow(numeric.sub(yi, y_est), 2));
+            var title = 'Total error squared = ' + error.toFixed(4);
+
+            var data = [
+                {
+                    x: xi,
+                    y: yi,
+                    type: 'scatter',
+                    mode: 'markers',
+                    name: 'Data points'
+                },
+                {
+                    x: x_range,
+                    y: numeric.add(numeric.mul(a, numeric.pow(x_range, b)), c),
+                    type: 'scatter',
+                    mode: 'lines',
+                    name: 'Curve fit'
+                }
+            ];
+
+            var layout = {
+                xaxis: {
+                    title: 'x',
+                    range: [0, 1]
+                },
+                yaxis: {
+                    title: 'y',
+                    range: [0, 1]
+                },
+                showlegend: true,
+                title: {
+                    text: title,
+                    font: {
+                        size: 16
+                    }
+                }
+            };
+
+            Plotly.newPlot('outputContainer', data, layout);
+
+            // Add arrows to the plot
+            for (var i = 0; i < xi.length; i++) {
+                var arrow = {
+                    x: [xi[i], xi[i]],
+                    y: [yi[i], Math.max(Math.min(a * xi[i] ** b + c, 1), 0)],
+                    mode: 'lines',
+                    line: {
+                        color: 'red',
+                        width: 1,
+                        dash: 'dash'
+                    },
+                    showlegend: false
+                };
+                data.push(arrow);
+            }
+
+            Plotly.update('outputContainer', data, layout);
+        }
+
+        var sliderContainer = document.getElementById("sliderContainer");
+        var sliders = [
+            { id: "a", min: 0, max: 5, value: 2, step: 0.01, description: "a" },
+            { id: "b", min: 0, max: 5, value: 2, step: 0.01, description: "b" },
+            { id: "c", min: 0, max: 1, value: 0, step: 0.01, description: "c" }
+        ];
+
+        sliders.forEach(function(slider) {
+            var input = document.createElement("input");
+            input.type = "range";
+            input.min = slider.min;
+            input.max = slider.max;
+            input.value = slider.value;
+            input.step = slider.step;
+            input.id = slider.id;
+            input.oninput = function() {
+                document.getElementById(slider.id + "_value").textContent = this.value;
+                func(parseFloat(document.getElementById("a").value), parseFloat(document.getElementById("b").value), parseFloat(document.getElementById("c").value));
+            };
+            input.classList.add("slider");
+
+            var label = document.createElement("label");
+            label.innerHTML = slider.description;
+            label.setAttribute("for", slider.id);
+            label.style.textAlign = "right";
+
+            var valueDisplay = document.createElement("span"); // Create a span element for value display
+            valueDisplay.id = slider.id + "_value"; // Set the id for value display
+            valueDisplay.textContent = slider.value; // Set the initial value
+
+            sliderContainer.appendChild(label);
+            sliderContainer.appendChild(input);
+            sliderContainer.appendChild(valueDisplay); // Append the value display element
+        });
+
+        var outputContainer = document.getElementById("outputContainer");
+        outputContainer.style.height = "400px";
+
+        // Call func with initial values
+        func(parseFloat(document.getElementById("a").value), parseFloat(document.getElementById("b").value), parseFloat(document.getElementById("c").value));
+    </script>
+</body>
+</html>
