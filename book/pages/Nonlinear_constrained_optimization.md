@@ -29,7 +29,9 @@ For unconstrained optimization we need to run at least `scipy.optimize.minimize(
    - `scipy.optimize.LinearConstraint`
    - `scipy.optimize.NonlinearConstraint`
 
-ADD QUESTION WHY REQUIRED
+:::{card} Test yourself
+<iframe src="https://tudelft.h5p.com/content/1292254710251972777/embed" aria-label="Need for x0" width="1088" height="637" frameborder="0" allowfullscreen="allowfullscreen" allow="autoplay *; geolocation *; microphone *; camera *; midi *; encrypted-media *"></iframe><script src="https://tudelft.h5p.com/js/h5p-resizer.js" charset="UTF-8"></script>
+:::
 
 As you can see, the constraints are stored in an object `scipy.optimize.LinearConstraint` and/or `scipy.optimize.NonlinearConstraint`. These function have the following input, for `scipy.optimize.NonlinearConstraint(fun, lb, ub, ...)`:
 - `fun`, the function representing the constraint function $g\left(x\right)$ or $h\left(x\right)$ to be minimized. Again, `fun` is a callable. The `scipy.optimize.minimize` function takes care of defining and inputting our design variable $x$.
