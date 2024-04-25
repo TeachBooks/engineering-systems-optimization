@@ -19,4 +19,7 @@ parts:
     - file: pages/linear_constrained_optimization
       sections:
       - file: pages/linear_constrained_optimization_example
+    - file: pages/Nonlinear_constrained_optimization
+      sections:
+      - file: pages/nonlinear_constrained_optimization_example
     - file: more_will_follow
