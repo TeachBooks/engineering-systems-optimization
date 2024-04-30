@@ -37,6 +37,10 @@ Three different ways of solving multi-objective optimization problems were intro
 
 All of these methods could also be applied to problems which include more than two goals.
 
+:::{card} Test yourself
+<iframe src="https://tudelft.h5p.com/content/1292259181041373527/embed" aria-label="MOO models" width="1088" height="637" frameborder="0" allowfullscreen="allowfullscreen" allow="autoplay *; geolocation *; microphone *; camera *; midi *; encrypted-media *"></iframe><script src="https://tudelft.h5p.com/js/h5p-resizer.js" charset="UTF-8"></script>
+:::
+
 ### Normalize objective functions
 Normalizing the objectives functions can be done by setting the domain of every goal $f$ between $0$ and $1$ by finding (or estimating) the lower and upper bounds for these objective functions within the domain:
 
@@ -49,7 +53,7 @@ Normalizing the objectives functions can be done by setting the domain of every 
 ```
 
 :::{card} Test yourself
-<iframe src="https://tudelft.h5p.com/content/1292259181041373527/embed" aria-label="MOO models" width="1088" height="637" frameborder="0" allowfullscreen="allowfullscreen" allow="autoplay *; geolocation *; microphone *; camera *; midi *; encrypted-media *"></iframe><script src="https://tudelft.h5p.com/js/h5p-resizer.js" charset="UTF-8"></script>
+<iframe src="https://tudelft.h5p.com/content/1292259186747388407/embed" aria-label="Normalization" width="1088" height="637" frameborder="0" allowfullscreen="allowfullscreen" allow="autoplay *; geolocation *; microphone *; camera *; midi *; encrypted-media *"></iframe><script src="https://tudelft.h5p.com/js/h5p-resizer.js" charset="UTF-8"></script>
 :::
 
 ## Method
