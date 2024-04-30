@@ -18,22 +18,22 @@ Three different ways of solving multi-objective optimization problems were intro
 
 ```{math}
 :label: multi_objective_optimization_weighted
- \mathop {\min }\limits_x {{\delta }_{1,\text{predefined}}} \cdot f_1\left( x \right), \delta_{2\text{predefined}} \cdot f_2\left( x \right)  
+ \mathop {\min }\limits_x \left( {{\delta }_{1,\text{predefined}}} \cdot f_1\left( x \right) + \delta_{2\text{predefined}} \cdot f_2\left( x \right) \right)
 ```
 
 2. Goal attainment, minimizing the maximum difference with respect to two goal values for the objectives:
 
 ```{math}
 :label: multi_objective_optimization_goal
- \mathop {\min }\limits_x \max \left( f_1\left( x \right) - f_{1,\text{goal}}, f_2 \left( x \right) - f_{2,\text{goal}} \right)
+ \mathop {\min }\limits_x \left( \max \left( f_1\left( x \right) - f_{1,\text{goal}}, f_2 \left( x \right) - f_{2,\text{goal}} \right) \right)
 ```
 
 3. Pareto front: finding many possible optimal solution for arbitrary weights
 
+```{math}
 :label: multi_objective_optimization_pareto
- \mathop {\min }\limits_x {{\delta }_{1}} \cdot f_1\left( x \right), \delta_2 \cdot f_2\left( x \right)  
+ \mathop {\min }\limits_x \left( {{\delta }_{i}} \cdot f_1\left( x \right) +  \delta_j \cdot f_2\left( x \right) \right)
 ```
-
 
 ## Questions, discussions and comments
 <script src="https://utteranc.es/client.js"
