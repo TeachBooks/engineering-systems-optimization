@@ -39,10 +39,10 @@ Three different ways of solving multi-objective optimization problems were intro
 Normalizing the objectives functions can be done by setting the domain of every goal $f$ between $0$ and $1$ by finding (or estimating) the lower and upper bounds for these objective functions within the domain:
 
 ```{math}
-:label: normalizing f
+:label: normalizing_f
 \begin{align}
  & f_{\text{normalized}}\left( x \right) = \cfrac{f\left( x \right) - \min \left(f\left( x \right) \right)}{\max \left(f\left( x \right) \right) - \min \left( f\left( x \right) \right)} \\
- & \text{with } & \min \left(f\left( x \right) \right),\max \left(f\left( x \right) \right) &\text{ for } & x_i^l \le {x_i} \le x_i^u & \text{ with } i = 1,n
+ & \text{with } \min \left(f\left( x \right) \right),\max \left(f\left( x \right) \right) \text{ for }  x_i^l \le {x_i} \le x_i^u  \text{ with } i = 1,n
 \end{align}
 ```
 
