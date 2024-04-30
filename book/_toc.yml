@@ -23,4 +23,6 @@ parts:
       sections:
       - file: pages/nonlinear_constrained_optimization_example
     - file: pages/moo
+      sections:
+      - file: pages/moo_example
     - file: more_will_follow
