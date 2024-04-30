@@ -28,11 +28,14 @@ Three different ways of solving multi-objective optimization problems were intro
  \mathop {\min }\limits_x \left( \max \left( f_1\left( x \right) - f_{1,\text{goal}}, f_2 \left( x \right) - f_{2,\text{goal}} \right) \right)
 ```
 
-3. Pareto front: finding many possible optimal solution for arbitrary weights. It's good practise to normalize the objective functions
+3. Pareto front: finding many possible optimal solution for a large set weights. It's good practise to normalize the objective functions. 
 
 ```{math}
 :label: multi_objective_optimization_pareto
- \mathop {\min }\limits_x \left( {{\delta }_{i}} \cdot f_{1,\text{normalized}}\left( x \right) +  \delta_j \cdot f_{2,\text{normalized}}\left( x \right) \right)
+\begin{align}
+  & \underset{x}{\mathop{\min }}\,\left( {{\delta }_{i}}\cdot {{f}_{1,\text{normalized}}}\left( x \right)+{{\delta }_{j}}\cdot {{f}_{2,\text{normalized}}}\left( x \right) \right) \\ 
+ & \text{with }0<{{\delta }_{i}}<1\text{ and }{{\delta }_{j}}=1-{{\delta }_{i}} \\ 
+\end{align}
 ```
 
 All of these methods could also be applied to problems which include more than two goals.
@@ -47,7 +50,7 @@ Normalizing the objectives functions can be done by setting the domain of every 
 ```{math}
 :label: normalizing_f
 \begin{matrix}
-  {{f}_{\text{normalized}}}\left( x \right)=\frac{f\left( x \right)-\underset{x}{\mathop{\min }}\,\left( f\left( x \right) \right)}{\underset{x}{\mathop{\max }}\,\left( f\left( x \right) \right)-\underset{x}{\mathop{\min }}\,\left( f\left( x \right) \right)} \\ 
+  {{f}_{\text{normalized}}}\left( x \right)=\cfrac{f\left( x \right)-\underset{x}{\mathop{\min }}\,\left( f\left( x \right) \right)}{\underset{x}{\mathop{\max }}\,\left( f\left( x \right) \right)-\underset{x}{\mathop{\min }}\,\left( f\left( x \right) \right)} \\ 
   \text{with }\underset{x}{\mathop{\min }}\,\left( f\left( x \right) \right),\underset{x}{\mathop{\max }}\,\left( f\left( x \right) \right)\text{ for }x_{i}^{l}\le {{x}_{i}}\le x_{i}^{u}\text{ with }i=1,n \\ 
 \end{matrix}
 ```
