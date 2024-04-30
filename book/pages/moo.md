@@ -47,8 +47,8 @@ Normalizing the objectives functions can be done by setting the domain of every 
 ```{math}
 :label: normalizing_f
 \begin{align}
- & f_{\text{normalized}}\left( x \right) = \cfrac{f\left( x \right) - \min \left(f\left( x \right) \right)}{\max \left(f\left( x \right) \right) - \min \left( f\left( x \right) \right)} \\
- & \text{with } \min \left(f\left( x \right) \right),\max \left(f\left( x \right) \right) \text{ for }  x_i^l \le {x_i} \le x_i^u  \text{ with } i = 1,n
+ & f_{\text{normalized}}\left( x \right) = \cfrac{f\left( x \right) - \mathop {\min }\limits_x \left(f\left( x \right) \right)}{\mathop {\max }\limits_x \left(f\left( x \right) \right) - \mathop {\min }\limits_x \left( f\left( x \right) \right)} \\
+ & \text{with } \mathop {\min }\limits_x \left(f\left( x \right) \right),\mathop {\max }\limits_x \left(f\left( x \right) \right) \text{ for }  x_i^l \le {x_i} \le x_i^u  \text{ with } i = 1,n
 \end{align}
 ```
 
