@@ -22,4 +22,5 @@ parts:
     - file: pages/Nonlinear_constrained_optimization
       sections:
       - file: pages/nonlinear_constrained_optimization_example
+    - file: pages/moo
     - file: more_will_follow
