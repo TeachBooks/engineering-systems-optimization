@@ -12,7 +12,7 @@ with:
 - Constraints and bounds as for single-objective optimization problems.
 
 ## Model
-Three different ways of solving multi-objective optimization problems were introduced, which all effectively convert the problem to a single-objective optimization problem:
+Three different ways of solving multi-objective optimization problems were introduced, which all effectively convert the problem to a single-objective optimization problem. All of this is assuming minimization problems:
 
 1. Weighted objective function: setting pre-determined weight on the two objectives. In general this requires the two objectives to have a comparable unit:
 
@@ -32,10 +32,10 @@ Three different ways of solving multi-objective optimization problems were intro
 
 ```{math}
 :label: multi_objective_optimization_pareto
-\begin{align}
-  & \underset{x}{\mathop{\min }}\,\left( {{\delta }_{i}}\cdot {{f}_{1,\text{normalized}}}\left( x \right)+{{\delta }_{j}}\cdot {{f}_{2,\text{normalized}}}\left( x \right) \right) \\ 
- & \text{with }0<{{\delta }_{i}}<1\text{ and }{{\delta }_{j}}=1-{{\delta }_{i}} \\ 
-\end{align}
+\begin{matrix}
+  \underset{x}{\mathop{\min }}\,\left( {{\delta }_{i}}\cdot {{f}_{1,\text{normalized}}}\left( x \right)+{{\delta }_{j}}\cdot {{f}_{2,\text{normalized}}}\left( x \right) \right) \\ 
+  \text{with }0<{{\delta }_{i}}<1\text{ and }{{\delta }_{j}}=1-{{\delta }_{i}} \\ 
+\end{matrix}
 ```
 
 All of these methods could also be applied to problems which include more than two goals.
