@@ -12,7 +12,7 @@
         }
         .slider-container {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
+            grid-template-columns: repeat(3, 1fr);
             grid-gap: 10px;
             width: 100%;
         }
@@ -54,52 +54,76 @@
         }
 
         function CO2func(s) {
-            return numeric.spline(RPM, CO2, s);
+            return interpolate(RPM, CO2, s);
         }
 
         function POWfunc(s) {
-            return numeric.spline(RPM, POW, s);
+            return interpolate(RPM, POW, s);
+
         }
 
-        function func(x, pareto_front) {
-            var RPM_continuous = numeric.linspace(800, 1800, 100);
-            var CO2_values = RPM_continuous.map(function(rpm) {
-                return CO2func(rpm);
-            });
-            var POW_values = RPM_continuous.map(function(rpm) {
-                return POWfunc(rpm);
-            });
+        function interpolate(x, y, s) {
+            var i = 1;
+            while (x[i] < s) {
+                i++;
+            }
+            var x0 = x[i - 1];
+            var x1 = x[i];
+            var y0 = y[i - 1];
+            var y1 = y[i];
+            var t = (s - x0) / (x1 - x0);
+            
+            // Calculate the coefficients for the cubic spline interpolation
+            var h = x1 - x0;
+            var a = (1 - t) * (1 - t) * (1 - t);
+            var b = 3 * t * (1 - t) * (1 - t);
+            var c = 3 * t * t * (1 - t);
+            var d = t * t * t;
+            
+            // Perform cubic spline interpolation
+            var interpolatedValue = a * y0 + b * y[i - 1] + c * y[i] + d * y1;
+            
+            return interpolatedValue;
+        }
 
-            var data = [
+        function func(x) {
+            
+            var weighted_obj_val = weighted_obj(x).toFixed(2);
+            var goal_attainment_val = goal_attainment(x).toFixed(2);
+
+            var outputContainer = document.getElementById("outputContainer");
+            var weighted_obj_val = weighted_obj(x).toFixed(2);
+            var goal_attainment_val = goal_attainment(x).toFixed(2);
+            var POWfunc_val = POWfunc(x).toFixed(2);
+            var CO2func_val = CO2func(x).toFixed(2);
+            
+            outputContainer.innerHTML = "<p>Weighted 🏋️ Objective: " + " = - 1/3 * POWfunc(" + x + ") + 2/3 * CO2func(" + x + ") = - 1/3 * "  + POWfunc_val + " + 2/3 * "  + CO2func_val + " = " + weighted_obj_val + "</p>" +
+                "<p>Goal 🥅 Attainment: max(460 - POWfunc(" + x + "), CO2func(" + x + ") - 640) = max(460 - " +  POWfunc_val + ", " + CO2func_val +  " - 640) = " + goal_attainment_val ;
+
+            var plotContainer = document.createElement("div");
+            plotContainer.id = "plotContainer";
+            plotContainer.style.height = "400px";
+            outputContainer.appendChild(plotContainer);
+
+            var plotData = [
                 {
-                    x: CO2,
-                    y: POW,
+                    x: [CO2func(parseFloat(document.getElementById("x").value))],
+                    y: [POWfunc(parseFloat(document.getElementById("x").value))],
                     type: 'scatter',
                     mode: 'markers',
-                    name: 'Data points'
+                    name: 'Selected RPM'
                 }
             ];
 
-            if (pareto_front) {
-                data.push({
-                    x: CO2_values,
-                    y: POW_values,
-                    type: 'scatter',
-                    mode: 'lines',
-                    name: 'Pareto Front'
-                });
-            }
-
-            var layout = {
+            var plotLayout = {
                 xaxis: {
                     title: 'CO2 (g/kWh)',
                     range: [680, 710]
                 },
                 yaxis: {
                     title: 'Power functions (kW)',
-                    range: [150, 400]
+                    range: [400, 150], // Flipped y-axis range
                 },
-                showlegend: true,
                 title: {
                     text: 'CO2 vs Power',
                     font: {
@@ -108,14 +132,7 @@
                 }
             };
 
-            Plotly.newPlot('outputContainer', data, layout);
-
-            var weighted_obj_val = weighted_obj(x);
-            var goal_attainment_val = goal_attainment(x);
-
-            var outputContainer = document.getElementById("outputContainer");
-            outputContainer.innerHTML = "<p>Weighted 🏋️ Objective: " + weighted_obj_val + "</p>" +
-                "<p>Goal 🥅 Attainment: " + goal_attainment_val + "</p>";
+            Plotly.newPlot('plotContainer', plotData, plotLayout);
         }
 
         var sliderContainer = document.getElementById("sliderContainer");
@@ -127,7 +144,7 @@
         xSlider.step = 1;
         xSlider.id = "x";
         xSlider.oninput = function() {
-            func(parseFloat(document.getElementById("x").value), document.getElementById("pareto_front").checked);
+            func(parseFloat(document.getElementById("x").value));
         };
         xSlider.classList.add("slider");
 
@@ -136,29 +153,26 @@
         xLabel.setAttribute("for", "x");
         xLabel.style.textAlign = "right";
 
-        var paretoFrontCheckbox = document.createElement("input");
-        paretoFrontCheckbox.type = "checkbox";
-        paretoFrontCheckbox.checked = false;
-        paretoFrontCheckbox.id = "pareto_front";
-        paretoFrontCheckbox.onchange = function() {
-            func(parseFloat(document.getElementById("x").value), document.getElementById("pareto_front").checked);
-        };
+        var valueDisplay = document.createElement("span");
+        valueDisplay.innerHTML = xSlider.value; // Set the initial value of the display element
+        valueDisplay.style.marginLeft = "10px"; // Add some margin to separate the value from the slider
 
-        var paretoFrontLabel = document.createElement("label");
-        paretoFrontLabel.innerHTML = "Pareto Front";
-        paretoFrontLabel.setAttribute("for", "pareto_front");
-        paretoFrontLabel.style.textAlign = "right";
+        xSlider.oninput = function() {
+            valueDisplay.innerHTML = xSlider.value; // Update the value display element when the slider value changes
+            func(parseFloat(document.getElementById("x").value));
+        };
 
         sliderContainer.appendChild(xLabel);
         sliderContainer.appendChild(xSlider);
-        sliderContainer.appendChild(paretoFrontLabel);
-        sliderContainer.appendChild(paretoFrontCheckbox);
+        sliderContainer.appendChild(valueDisplay); // Append the value display element
+
 
         var outputContainer = document.getElementById("outputContainer");
         outputContainer.style.height = "400px";
+        
 
         // Call func with initial values
-        func(parseFloat(document.getElementById("x").value), document.getElementById("pareto_front").checked);
+        func(parseFloat(document.getElementById("x").value));
     </script>
 </body>
 </html>
