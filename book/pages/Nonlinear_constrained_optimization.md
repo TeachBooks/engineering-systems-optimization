@@ -17,6 +17,7 @@ with:
 - $h_k\left(x\right)$, the $p$ linear or nonlinear inequality constraints
 - $x_k^l$ and $x_k^u$, the $n$ low er and upper bounds of the design variable
 
+(method_nonlinearconstrained)=
 ## Method
 For linear programs, we can use the function `scipy.optimize.minimize` again. The documentation of this function is available here: 
 https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.minimize.html {cite:p}`SciPy_user_guide`. In this course we'll cover only the relevant parts.
