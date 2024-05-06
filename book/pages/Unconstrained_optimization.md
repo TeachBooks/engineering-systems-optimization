@@ -15,7 +15,7 @@ with:
 (method_unconstrained)=
 ## Method
 In this course, we're making use of the function `scipy.optimize.minimize`. The documentation of this function is available here: 
-https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.minimize.html. In this course we'll cover only the relevant parts.
+https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.minimize.html {cite:p}`SciPy_user_guide`. In this course we'll cover only the relevant parts.
 
 For unconstrained optimization we need to run at least `scipy.optimize.minimize(fun, x0, ...)` with:
 - `fun`, the objective function $f\left(x\right)$ to be minimized. `fun` is a callable. The `scipy.optimize.minimize` function takes care of defining and inputting our design variable $x$.
