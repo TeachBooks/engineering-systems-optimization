@@ -38,7 +38,7 @@ with:
 - $x_i^l$ and $x_i^u$, the $n$ lower and upper bounds of the design variable
 
 ## Method
-For linear programs, we can use the function `scipy.optimize.linprog`. In contrast to `scipy.optimize.minimize`, this function is limited to linear functions. The documentation of this function is available here: https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.linprog.html. In this course we'll cover only the relevant parts.
+For linear programs, we can use the function `scipy.optimize.linprog`. In contrast to `scipy.optimize.minimize`, this function is limited to linear functions. The documentation of this function is available here: https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.linprog.html {cite:p}`SciPy_user_guide`. In this course we'll cover only the relevant parts.
 
 Again, we won't use all options, but a minimum requirement for our problem is the command `scipy.optimize.linprog(c, A_ub, b_ub, A_eq, b_eq, bounds, ...)` with:
  - `c`, a onedimensional numpy array with the $n$ coefficients of the linear objective function $c$.
