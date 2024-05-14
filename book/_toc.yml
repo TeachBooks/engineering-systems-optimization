@@ -26,4 +26,6 @@ parts:
       sections:
       - file: pages/moo_example
     - file: pages/metaheuristics
+      sections:
+      - file: pages/metaheuristics_example
     - file: more_will_follow
