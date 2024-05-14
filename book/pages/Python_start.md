@@ -52,6 +52,10 @@ The following steps will create an Anaconda environment called `optimization` an
 
 One important reminder: throughout the semester you should be using the optimization environment every time you use Python, except when instructed otherwise. All you have to do is remember to use the command `conda activate optimization` prior to opening your files, or select the new environment in the Anaconda Navigator prior to opening any python-program.
 
+(pip_install)=
+## Add other packages
+If you want to install additional packages, you can do so by using `pip install <package name>`. Make sure you do this from within your activated environment.
+
 Source: {cite:ts}`mude_getting_started`
 
 ## Questions, discussions and comments

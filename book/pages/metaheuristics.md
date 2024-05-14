@@ -31,7 +31,7 @@ iframe
 :::
 
 ### pymoo
-`pymoo` has implemented, among others, the genetic algorithm. The documentation of this function, although very limited, is available here: https://pymoo.org/algorithms/soo/ga.html#nb-ga {cite:p}`pymoo`.
+`pymoo` has implemented, among others, the genetic algorithm. The documentation of this function, although very limited, is available here: https://pymoo.org/algorithms/soo/ga.html#nb-ga {cite:p}`pymoo`. Make sure you install pymoo as explained here {ref}`pip_install` and [in the documentation of pymoo](https://pymoo.org/installation.html).
 
 ## Questions, discussions and comments
 <script src="https://utteranc.es/client.js"
