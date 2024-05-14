@@ -30,7 +30,7 @@ Please note that are even more options to adapt the optimization algorithm.
 The function `scipy.optimize.differential_evolution` outputs an object `scipy.optimize.OptimizeResult` similar as `scipy.optimize.minimize` explained for [unconstrained optimization](method_unconstrained).
 
 :::{card} Test yourself
-iframe
+<iframe src="https://tudelft.h5p.com/content/1292271289000014767/embed" aria-label="Differential evolution" width="1088" height="637" frameborder="0" allowfullscreen="allowfullscreen" allow="autoplay *; geolocation *; microphone *; camera *; midi *; encrypted-media *"></iframe><script src="https://tudelft.h5p.com/js/h5p-resizer.js" charset="UTF-8"></script>
 :::
 
 ### pymoo
@@ -51,9 +51,20 @@ The problem needs to be defined in an object, therefore we'll use [`pymoo.proble
 - `objs`, the objective function $f$ to be minimized, this needs to be a `callable`.
 - `constr_ieq`, list of $m$ inquality constraint functions $g$, this needs to be a list of `callable`
 - `constr_eq`, list of $n$ equality constraint functions $h$, this needs to be a list of `callable`.
-xl=None,
-                 xu=None,
+- `xl`, `Float` or `ndarray` of length $n$ representing the lower bounds of the design variables.
+- `xu`, `Float` or `ndarray` of length $n$ representing the upper bounds of the design variables.
 
+As a method, we'll use the genetic algorithm. This is stored in the object [`pymoo.algorithms.soo.nonconvex.ga(pop_size=100, sampling=<pymoo.operators.sampling.rnd.FloatRandomSampling object>, selection=<pymoo.operators.selection.tournament.TournamentSelection object>, crossover=<pymoo.operators.crossover.sbx.SBX object>, mutation=<pymoo.operators.mutation.pm.PM object>, survival=<pymoo.algorithms.soo.nonconvex.ga.FitnessSurvival object>, ...)`](https://pymoo.org/algorithms/soo/ga.html) with:
+- `pop_size`, `int` defining size of the population
+- `sampling`, pymoo object defining how sampling should happen. If you want to solve integer problems, input must be `pymoo.operators.sampling.rnd.    IntegerRandomSampling()`
+- `selection`, pymoo object defining how selection should happen
+- `crossover`, pymoo object defining how crossover should happen. If you want to solve integer problems, input must be `pymoo.operators.crossover.sbx.SBX(repair=pymoo.operators.repair.rounding.RoundingRepair())`
+- `mutation`, pymoo object defining how mutation should happen. If you want to solve integer problems, input must be `pymoo.operators.mutation.pm.PM(repair=pymoo.operators.repair.rounding.RoundingRepair())`
+- `survival`, pymoo object defining how survival should happen
+
+:::{card} Test yourself
+<iframe src="https://tudelft.h5p.com/content/1292271228310077247/embed" aria-label="pymoo" width="1088" height="637" frameborder="0" allowfullscreen="allowfullscreen" allow="autoplay *; geolocation *; microphone *; camera *; midi *; encrypted-media *"></iframe><script src="https://tudelft.h5p.com/js/h5p-resizer.js" charset="UTF-8"></script>
+:::
 
 ## Questions, discussions and comments
 <script src="https://utteranc.es/client.js"
