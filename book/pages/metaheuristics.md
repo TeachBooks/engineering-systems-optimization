@@ -13,7 +13,7 @@ We need to run at least `scipy.optimize.differential_evolution(fun, x0, bounds, 
 - `fun`, the function representing the objective function $f\left(x\right)$ to be minimized. `fun` is a callable. The `scipy.optimize.minimize` function takes care of defining and inputting our design variable $x$.
 - `x0`, the initial guess for our design variable $x$. It needs to be a `ndarray` with length $n$
 - `Bounds`: A sequence of $i$ `(min, max)` pairs for each element in $x$, defining the minimum $x_i^l$ and maximum values $x_i^u$ of that decision variable. `None` is used to specify no bound.
-- `constraints`, a single or a list of constraint objective defined in the same way as in [nonlinear constrained optimization](method_unconstrained) with:
+- `constraints`, a single or a list of constraint objective defined in the same way as in [nonlinear constrained optimization](method_nonlinearconstrained) with:
    - `scipy.optimize.LinearConstraint`
    - `scipy.optimize.NonlinearConstraint`
 - `integrality`, an `ndarray` specifying whether part of the $n$ design variables is constrained to integer values.
