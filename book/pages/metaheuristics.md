@@ -2,6 +2,9 @@
 
 In this chapter, we'll cover how to solve all optimization problem using metaheuristics, which are methods. Depending on the actual metaheuristic different models can be solved, but in general metaheuristics are more versatile than the gradient-based methods.
 
+## Model
+The two method covered in this chapter will be applied on our most general nonlinear constrained optimization problem as defined before in {eq}`nonlinear_constrained_optimization`.
+
 ## Method
 Two different methods will be treated: `scipy.optimize.differential_evolution` and the genetic algorithm from `pymoo.optimize`. There are many different methods available in different programming languagues, these two methods are only an example of what you could use.
 
@@ -31,7 +34,26 @@ iframe
 :::
 
 ### pymoo
-`pymoo` has implemented, among others, the genetic algorithm. The documentation of this function, although very limited, is available here: https://pymoo.org/algorithms/soo/ga.html#nb-ga {cite:p}`pymoo`. Make sure you install pymoo as explained here {ref}`pip_install` and [in the documentation of pymoo](https://pymoo.org/installation.html).
+`pymoo` has implemented, among others, the genetic algorithm. The documentation of this function, although very limited, is available here: https://pymoo.org/ {cite:p}`pymoo`. Again, we'll cover only the relevant parts. Make sure you install pymoo as explained here in the section {ref}`pip_install` and [in the documentation of pymoo](https://pymoo.org/installation.html).
+
+The main function we need is [`pymoo.minimize(problem, algorithm, ...)`](https://pymoo.org/interface/minimize.html) with:
+- `problem`, pymoo object containing the problem
+- `algorithm`, pymoo object containing the method
+
+This results in an object [`pymoo.core.result.Result`](https://pymoo.org/interface/result.html) with:
+- `Result.x`, the solution found
+- `Result.F`, value of the objective function for the solution
+- `Result.G`, value of the constraint functions for the solution
+- `Result.time`, the time required to run the algorithm
+
+The problem needs to be defined in an object, therefore we'll use [`pymoo.problems.functional(n_var, objs, constr_ieq=[], constr_eq=[], xl, xu, ...)`](https://pymoo.org/problems/definition.html#FunctionalProblem-(loop)) with:
+- `n_var`, the number of design variables $n$, this needs to be an `int`.
+- `objs`, the objective function $f$ to be minimized, this needs to be a `callable`.
+- `constr_ieq`, list of $m$ inquality constraint functions $g$, this needs to be a list of `callable`
+- `constr_eq`, list of $n$ equality constraint functions $h$, this needs to be a list of `callable`.
+xl=None,
+                 xu=None,
+
 
 ## Questions, discussions and comments
 <script src="https://utteranc.es/client.js"
