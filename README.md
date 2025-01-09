@@ -1,6 +1,3 @@
-# About the project
-This project contains the content of Engineering Optimization
+# Moved
 
-# Contributors
-- Tom van Woudenberg - T.R.vanWoudenberg@tudelft.nl
-- Maria Nogal - M.Nogal@tudelft.nl
+This project has moved to https://github.com/TUDelft-books/engineering-systems-optimization
